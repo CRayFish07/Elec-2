@@ -6,7 +6,7 @@ import com.yan.util.StringUtil;
 
 /**
  * 服务提供类
- * @author yzx
+ * @author yzx 2016
  *
  */
 public class ServiceProvider {
