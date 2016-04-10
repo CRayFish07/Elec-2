@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-2-7 17:34:59 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.yzx.elec.pojo.ElecText" table="elec_text" optimistic-lock="version">
+        <id name="textid" type="string">
+            <column name="textid" length="50" />
+            <generator class="uuid" />
+        </id>
+        <property name="textname" type="string">
+            <column name="textname" length="50" />
+        </property>
+        <property name="textdate" type="timestamp">
+            <column name="textdate" length="19" />
+        </property>
+        <property name="textremark" type="string">
+            <column name="textremark" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

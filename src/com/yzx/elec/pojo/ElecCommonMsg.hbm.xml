@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-2-12 0:14:36 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.yzx.elec.pojo.ElecCommonMsg" table="elec_commonmsg" optimistic-lock="version">
+        <id name="comId" type="java.lang.Long">
+            <column name="ComId" length="50" />
+            <generator class="increment" />
+        </id>
+        <property name="stationRun" type="string">
+            <column name="StationRun" length="1000" />
+        </property>
+        <property name="devRun" type="string">
+            <column name="DevRun" length="1000" />
+        </property>
+        <property name="createDate" type="timestamp">
+            <column name="CreateDate" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

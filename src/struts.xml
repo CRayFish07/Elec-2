@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<constant name="struts.action.extension" value="do"></constant>
+	<constant name="struts.devMode" value="true"></constant>
+	<constant name="struts.ui.theme" value="simple"></constant>
+    <package name="system" extends="struts-default" namespace="/system">
+        <action name="elecTextAction_*" class="com.yzx.elec.web.action.ElecTextFormAction" method="{1}">
+            <result name="save">textAdd.jsp</result>
+            <result name="success">textAdd.jsp</result>
+        </action>
+        <action name="elecCommonMsgAction_*" class="com.yzx.elec.web.action.ElecCommonMsgAction" method="{1}">
+       		<result name="actingIndex">/WEB-INF/page/system/actingIndex.jsp</result>
+       		<result name="saveMsg" type="redirectAction">
+       			<param name="actionName">elecCommonMsgAction_actingIndex</param>
+       			<param name="nameSpace">/system</param>
+       		</result>
+        </action>
+         <action name="elecDDLAction_*" class="com.yzx.elec.web.action.ElecSystemDDLAction" method="{1}">
+            <result name="home">/WEB-INF/page/system/dictionaryIndex.jsp</result>
+        </action>
+    </package>
+	<package name="menu" extends="struts-default" namespace="/menu">
+		<action name="elecMenuAction_*" class="com.yzx.elec.web.action.ElecMenuAction" method="{1}">
+            <result name="home">/WEB-INF/page/menu/home.jsp</result>
+            <result name="title">/WEB-INF/page/menu/title.jsp</result>
+            <result name="left">/WEB-INF/page/menu/left.jsp</result>
+            <result name="change1">/WEB-INF/page/menu/change1.jsp</result>
+            <result name="loading">/WEB-INF/page/menu/loading.jsp</result>
+            
+            <result name="alermXZ">/WEB-INF/page/menu/alermXZ.jsp</result>
+            <result name="alermJX">/WEB-INF/page/menu/alermJX.jsp</result>
+            <result name="alermZD">/WEB-INF/page/menu/alermZD.jsp</result>
+            <result name="alermSB">/WEB-INF/page/menu/alermSB.jsp</result>
+            <result name="alermYS">/WEB-INF/page/menu/alermYS.jsp</result>
+        </action>
+	</package>
+</struts>

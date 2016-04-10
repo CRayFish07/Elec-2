@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="com/yan/util/JsonUtil.java|com/yan/interfaces/impl/Json.java|com/yan/fx/util/ColorUtil.java|com/yan/fx/util/ImageUtil.java|com/yan/fx/ui/control/DialogPanel.java|com/yan/fx/ui/control/DigitalClock.java|com/yan/fx/ui/control/ImageButton.java|com/yan/fx/ui/control/SanFranciscoFireworks.java" kind="src" path="util"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
