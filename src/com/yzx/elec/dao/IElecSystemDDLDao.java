@@ -1,6 +1,6 @@
 package com.yzx.elec.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.yzx.elec.pojo.ElecSystemDDL;
 
@@ -10,6 +10,6 @@ public interface IElecSystemDDLDao extends ICommonDao<ElecSystemDDL> {
 	/**
 	 * 查询数据字典中的关键字
 	 */
-	public ArrayList<String> findKeywords();
+	public List<String> findKeywords();
 	
 }

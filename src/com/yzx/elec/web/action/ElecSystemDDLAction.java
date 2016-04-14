@@ -1,6 +1,6 @@
 package com.yzx.elec.web.action;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -22,7 +22,7 @@ public class ElecSystemDDLAction extends BaseAction implements ModelDriven<ElecS
 
 	
 	public String home() {
-		ArrayList<String> keywords = service.findKeyWord();
+		List<String> keywords = service.findKeyWord();
 		return "home";
 	}
 }

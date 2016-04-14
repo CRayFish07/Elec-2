@@ -1,6 +1,6 @@
 package com.yzx.elec.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.yzx.elec.pojo.ElecSystemDDL;
 
@@ -10,5 +10,5 @@ public interface IElecSystemDDlService extends ICommonService<ElecSystemDDL> {
 	/**
 	 * 查询数据字典关键字
 	 */
-	public ArrayList<String> findKeyWord();
+	public List<String> findKeyWord();
 }

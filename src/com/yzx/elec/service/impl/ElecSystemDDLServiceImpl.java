@@ -1,6 +1,5 @@
 package com.yzx.elec.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -27,9 +26,11 @@ public class ElecSystemDDLServiceImpl extends CommonServiceImpl<ElecSystemDDL> i
 	}
 
 	@Override
-	public ArrayList<String> findKeyWord() {
+	public List<String> findKeyWord() {
 		IElecSystemDDLDao ddlDao = (IElecSystemDDLDao)dao;
-		return ddlDao.findKeywords();
+		
+		List<String> keyWords = ddlDao.findKeywords();
+		return keyWords;
 	}
 
 }

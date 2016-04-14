@@ -6,7 +6,7 @@
     <class name="com.yzx.elec.pojo.ElecSystemDDL" table="elec_systemddl">
         <id name="seqId" type="int">
             <column name="seqId" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="keyword" type="string">
             <column name="keyword" length="20" not-null="true" />

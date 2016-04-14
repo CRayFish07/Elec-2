@@ -15,6 +15,7 @@
         
         <mapping resource="com/yzx/elec/pojo/ElecText.hbm.xml"/>
         <mapping resource="com/yzx/elec/pojo/ElecCommonMsg.hbm.xml"/>
+        <mapping resource="com/yzx/elec/pojo/ElecSystemddl.hbm.xml"/>
     </session-factory>
     
 </hibernate-configuration>
