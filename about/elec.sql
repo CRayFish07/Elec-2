@@ -25,10 +25,10 @@ CREATE TABLE `elec_commonmsg` (
 -- ----------------------------
 DROP TABLE IF EXISTS `elec_systemddl`;
 CREATE TABLE `elec_systemddl` (
-  `seqId` int(11) NOT NULL,
-  `keyword` varchar(20) NOT NULL,
-  `ddlCode` int(11) NOT NULL,
-  `ddlname` varchar(30) NOT NULL,
+  `seqId` int(11) NOT NULL COMMENT '序列id',
+  `keyword` varchar(20) NOT NULL COMMENT '类型关键字',
+  `ddlCode` int(11) NOT NULL COMMENT '操作code',
+  `ddlname` varchar(30) NOT NULL COMMENT '操作名',
   PRIMARY KEY (`seqId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

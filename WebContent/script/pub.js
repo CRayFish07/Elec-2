@@ -262,6 +262,12 @@ Pub.getParams2Str=function getParams2Str(sForm){
 }
 
 
+/**
+ * 异步提交表单
+ * @param domId 显示的对象元素
+ * @param action 请求的地址
+ * @param sForm 提供参数的元素
+ */
 Pub.submitActionWithForm=function(domId,action,sForm){
   var req = Pub.newXMLHttpRequest();
   var handlerFunction = Pub.getReadyStateHandler(req, domId,Pub.handleResponse);
