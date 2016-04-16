@@ -22,6 +22,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import com.yan.util.ColUtil;
 import com.yan.util.GenericSuperClassUtil;
 import com.yzx.elec.dao.ICommonDao;
+import com.yzx.elec.pojo.ElecSystemDDL;
 
 public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<T> {
 	/**
@@ -106,7 +107,7 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 	protected void setQueryParams(Query query, ArrayList<String> params) {
 		if(!ColUtil.isEmpty(params)) {
 			for(int i=0; i<params.size(); i++) {
-				query.setParameter(i, "%"+params.get(i)+"%");
+				query.setParameter(i, params.get(i));
 			}
 		}
 	}
@@ -124,6 +125,11 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 		hql.deleteCharAt(hql.length()-1);
 		
 		return hql.toString();
+	}
+
+	@Override
+	public void deleteObject(ElecSystemDDL ddl) {
+		ht.delete(ddl);
 	}
 	
 }

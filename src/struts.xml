@@ -22,6 +22,10 @@
          <action name="elecDDLAction_*" class="com.yzx.elec.web.action.ElecSystemDDLAction" method="{1}">
             <result name="home">/WEB-INF/page/system/dictionaryIndex.jsp</result>
             <result name="edit">/WEB-INF/page/system/dictionaryEdit.jsp</result>
+            <result name="save" type="redirectAction">
+            	<param name="actionName">elecDDLAction_home</param>
+            	<param name="nameSpace">/system</param>
+            </result>
         </action>
     </package>
 	<package name="menu" extends="struts-default" namespace="/menu">

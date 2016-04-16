@@ -89,7 +89,7 @@
 		        }	
 		    }
 		  }
-	      document.Form2.action="savedict.do";
+	      document.Form2.action="system/elecDDLAction_save.do";
 	      document.Form2.submit();     
 	}
 	  
@@ -163,7 +163,7 @@ function delTableRow(rowNum){
 				<tr>
 					<td class="ta_01" align="right" width="35%" >类型列表：</td>
 					<td class="ta_01" align="left"  width="30%" >
-						<s:select list="#request.systemlist" id="keyword" value="keyword"
+						<s:select list="#request.systemlist" id="keyword" name="keyword" value="keyword"
 									listKey="keyword" listValue="keyword"
 									cssStyle="width:180px" cssClass="bg" onchange="changetype()"
 									headerKey="jerrynew" headerValue=""

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.opensymphony.xwork2.ModelDriven;
+import com.yan.util.ColUtil;
 import com.yzx.elec.container.ServiceProvider;
+import com.yzx.elec.pojo.ElecSystemDDL;
 import com.yzx.elec.service.IElecSystemDDlService;
 import com.yzx.elec.web.form.ElecSystemDDLForm;
 
@@ -27,7 +29,14 @@ public class ElecSystemDDLAction extends BaseAction implements ModelDriven<ElecS
 	}
 	
 	public String edit() {
+		List<ElecSystemDDLForm> formList = changePoList2VoList(service.findObjectsByConditions(form));
+		request.setAttribute("systemList", formList);
 		return "edit";
+	}
+	
+	public String save() {
+		service.saveSystemDDLList(form);
+		return "save";
 	}
 
 
@@ -43,5 +52,32 @@ public class ElecSystemDDLAction extends BaseAction implements ModelDriven<ElecS
 		}
 		
 		return vos;
+	}
+	
+	/**
+	 * ½«po×ª»»Îªvo
+	 * @param queryResult
+	 * @return
+	 */
+	private List<ElecSystemDDLForm> changePoList2VoList(List<ElecSystemDDL> queryResult) {
+		if(ColUtil.isEmpty(queryResult)) {
+			return null;
+		}
+		
+		ArrayList<ElecSystemDDLForm> result = new ArrayList<ElecSystemDDLForm>();
+		for(ElecSystemDDL esddl : queryResult) {
+			if(esddl == null) {
+				continue;
+			}
+			
+			ElecSystemDDLForm ddlForm = new ElecSystemDDLForm();
+			ddlForm.setSeqId(esddl.getSeqId());
+			ddlForm.setDdlCode(esddl.getDdlCode());
+			ddlForm.setDdlname(esddl.getDdlname());
+			ddlForm.setKeyword(esddl.getKeyword());
+			
+			result.add(ddlForm);
+		}
+		return result;
 	}
 }

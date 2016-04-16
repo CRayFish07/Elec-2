@@ -38,11 +38,11 @@ public class ElecTextServiceImpl extends CommonServiceImpl<ElecText> implements 
 		StringBuilder conditionHql = new StringBuilder();
 		if(!StringUtil.isEmpty(etf.getTextname())) {
 			conditionHql.append(" and o.textname like ?");
-			params.add(etf.getTextname());
+			params.add("%"+etf.getTextname()+"%");
 		}
 		if(!StringUtil.isEmpty(etf.getTextremark())) {
 			conditionHql.append(" and o.textremark like ?");
-			params.add(etf.getTextremark());
+			params.add("%"+etf.getTextremark()+"%");
 		}
 		
 		//◊È÷Ø≈≈–Ú”Ôæ‰
