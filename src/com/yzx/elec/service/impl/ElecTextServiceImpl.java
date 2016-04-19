@@ -18,7 +18,7 @@ import com.yzx.elec.web.form.ElecTextForm;
 
 @Transactional(readOnly=true)
 @Service(IElecTextService.SERVICE_NAME)
-public class ElecTextServiceImpl extends CommonServiceImpl<ElecText> implements IElecTextService {
+public class ElecTextServiceImpl extends CommonServiceImpl<ElecText, ElecTextForm> implements IElecTextService {
 	@Resource(name=IElecTextDao.DAO_NAME)
 	@Override
 	protected void setDao(ICommonDao<ElecText> dao) {
@@ -26,7 +26,7 @@ public class ElecTextServiceImpl extends CommonServiceImpl<ElecText> implements 
 	}
 	
 	@Override
-	public List<ElecText> findObjectsByConditions(Object valueObject) {
+	public List<ElecTextForm> findObjectsByConditions(ElecTextForm valueObject) {
 		if(valueObject == null) {
 			return null;
 		}
@@ -50,7 +50,13 @@ public class ElecTextServiceImpl extends CommonServiceImpl<ElecText> implements 
 		orderBy.put("o.textdate", "desc");
 		orderBy.put("o.textname", "asc");
 //		conditionHql.append(" order by o.textdate desc, o.textname asc");
-		return dao.findObjectsByConditions(conditionHql.toString(), params, orderBy);
+		return changePo2VoList(dao.findObjectsByConditions(conditionHql.toString(), params, orderBy));
+	}
+
+	@Override
+	public List<ElecTextForm> changePo2VoList(List<ElecText> pos) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 
 }

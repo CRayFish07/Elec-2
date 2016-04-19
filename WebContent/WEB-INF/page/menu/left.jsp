@@ -323,7 +323,7 @@ TH {
 								    
 									<TR>
 										<TD class="box05" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/userIndex.jsp" target="mainFrame">用户管理</A>
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/elecUserAction_home.do" target="mainFrame">用户管理</A>
 										</TD>
 									</TR>
 									

@@ -19,7 +19,7 @@ import com.yzx.elec.web.form.ElecCommonMsgForm;
 
 @Transactional(readOnly=true)
 @Service(IElecCommonMsgService.SERVICE_NAME)
-public class ElecCommonMsgServiceImpl extends CommonServiceImpl<ElecCommonMsg> implements IElecCommonMsgService {
+public class ElecCommonMsgServiceImpl extends CommonServiceImpl<ElecCommonMsg, ElecCommonMsgForm> implements IElecCommonMsgService {
 
 	@Override
 	@Resource(name=IElecCommonMsgDao.DAO_NAME)
@@ -28,7 +28,7 @@ public class ElecCommonMsgServiceImpl extends CommonServiceImpl<ElecCommonMsg> i
 	}
 
 	@Override
-	public List<ElecCommonMsg> findObjectsByConditions(Object valueObject) {
+	public List<ElecCommonMsgForm> findObjectsByConditions(ElecCommonMsgForm valueObject) {
 		return null;
 	}
 	
@@ -78,6 +78,11 @@ public class ElecCommonMsgServiceImpl extends CommonServiceImpl<ElecCommonMsg> i
 			}
 			return result;
 		}
+	}
+
+	@Override
+	public List<ElecCommonMsgForm> changePo2VoList(List<ElecCommonMsg> pos) {
+		return null;
 	}
 	
 

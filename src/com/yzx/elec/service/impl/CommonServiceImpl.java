@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.yzx.elec.dao.ICommonDao;
 import com.yzx.elec.service.ICommonService;
 
-public abstract class CommonServiceImpl<T> implements ICommonService<T> {
+public abstract class CommonServiceImpl<T, V> implements ICommonService<T, V> {
 	protected ICommonDao<T> dao;
 	protected abstract void setDao(ICommonDao<T> dao);
 	
@@ -45,5 +45,5 @@ public abstract class CommonServiceImpl<T> implements ICommonService<T> {
 	}
 
 	@Override
-	public abstract List<T> findObjectsByConditions(Object valueObject);
+	public abstract List<V> findObjectsByConditions(V valueObject);
 }

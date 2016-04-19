@@ -21,7 +21,7 @@ import com.yzx.elec.web.form.ElecSystemDDLForm;
 
 @Transactional(readOnly=true)
 @Service(IElecSystemDDlService.SERVICE_NAME)
-public class ElecSystemDDLServiceImpl extends CommonServiceImpl<ElecSystemDDL> implements IElecSystemDDlService {
+public class ElecSystemDDLServiceImpl extends CommonServiceImpl<ElecSystemDDL, ElecSystemDDLForm> implements IElecSystemDDlService {
 	
 	@Override
 	@Resource(name=IElecSystemDDLDao.DAO_NAME)
@@ -30,7 +30,7 @@ public class ElecSystemDDLServiceImpl extends CommonServiceImpl<ElecSystemDDL> i
 	}
 
 	@Override
-	public List<ElecSystemDDL> findObjectsByConditions(Object valueObject) {
+	public List<ElecSystemDDLForm> findObjectsByConditions(ElecSystemDDLForm valueObject) {
 		ElecSystemDDLForm vo = (ElecSystemDDLForm)valueObject;
 		
 		StringBuilder conditionHql = new StringBuilder();
@@ -53,7 +53,7 @@ public class ElecSystemDDLServiceImpl extends CommonServiceImpl<ElecSystemDDL> i
 		orderBy.put(" o.seqId", "asc");
 		
 		List<ElecSystemDDL> queryResult = dao.findObjectsByConditions(conditionHql.toString(), params, orderBy);
-		return queryResult;
+		return changePo2VoList(queryResult);
 	}
 
 	@Override
@@ -129,6 +129,12 @@ public class ElecSystemDDLServiceImpl extends CommonServiceImpl<ElecSystemDDL> i
 			}
 		}
 		
+	}
+
+	@Override
+	public List<ElecSystemDDLForm> changePo2VoList(List<ElecSystemDDL> pos) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 
 }

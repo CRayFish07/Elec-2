@@ -1,13 +1,25 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-2-7 17:34:59 by Hibernate Tools 4.3.1.Final -->
+<!-- Generated 2016-4-19 15:13:59 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.yzx.elec.pojo.ElecText" table="elec_text" optimistic-lock="version">
-        <id name="textid" type="string">
-            <column name="textid" length="50" />
-            <generator class="uuid" />
+    <class name="com.yzx.elec.pojo.ElecText" table="elec_text" catalog="elec">
+        <id name="elecid" type="string">
+            <column name="elecid" length="32" />
+            <generator class="assigned" />
         </id>
+        <property name="elecname" type="string">
+            <column name="elecname" length="30" not-null="true" />
+        </property>
+        <property name="electime" type="timestamp">
+            <column name="electime" length="19" />
+        </property>
+        <property name="elecremark" type="string">
+            <column name="elecremark" length="200" />
+        </property>
+        <property name="textid" type="string">
+            <column name="textid" length="50" />
+        </property>
         <property name="textname" type="string">
             <column name="textname" length="50" />
         </property>
