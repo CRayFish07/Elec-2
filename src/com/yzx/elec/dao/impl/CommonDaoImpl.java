@@ -30,7 +30,7 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 	 */
 	@SuppressWarnings("rawtypes")
 	private Class c = GenericSuperClassUtil.getActualTypeClass4One(this.getClass());
-	private HibernateTemplate ht = null;
+	protected HibernateTemplate ht = null;
 	
 	@Override
 	public void save(T entity) {

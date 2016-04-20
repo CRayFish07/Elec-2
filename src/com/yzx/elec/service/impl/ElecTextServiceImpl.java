@@ -53,10 +53,20 @@ public class ElecTextServiceImpl extends CommonServiceImpl<ElecText, ElecTextFor
 		return changePo2VoList(dao.findObjectsByConditions(conditionHql.toString(), params, orderBy));
 	}
 
-	@Override
 	public List<ElecTextForm> changePo2VoList(List<ElecText> pos) {
-		// TODO 自动生成的方法存根
-		return null;
+		if(pos == null) {
+			return null;
+		}
+		
+		ArrayList<ElecTextForm> result = new ArrayList<ElecTextForm>();
+		for(ElecText text : pos) {
+			ElecTextForm form = new ElecTextForm();
+			form.setTextdate(text.getTextdate());
+			form.setTextname(text.getTextname());
+			form.setTextremark(text.getTextremark());
+			result.add(form);
+		}
+		return result;
 	}
 
 }

@@ -35,7 +35,7 @@ public class ElecCommonMsgServiceImpl extends CommonServiceImpl<ElecCommonMsg, E
 	public List<ElecCommonMsgForm> findAllObjects() {
 		LinkedHashMap<String, String> orderBy = new LinkedHashMap<String, String>();
 		orderBy.put("createdate", "desc");
-		return changePo2Vo(dao.findObjectsByConditions(null, null, orderBy));
+		return changePo2VoList(dao.findObjectsByConditions(null, null, orderBy));
 	}
 	
 	public List<ElecCommonMsgForm> findCommonMsgByCurrentDate() {
@@ -63,12 +63,12 @@ public class ElecCommonMsgServiceImpl extends CommonServiceImpl<ElecCommonMsg, E
 		return forms;
 	}
 
-	private List<ElecCommonMsgForm> changePo2Vo(List<ElecCommonMsg> entities) {
-		if(ColUtil.isEmpty(entities)) {
+	public List<ElecCommonMsgForm> changePo2VoList(List<ElecCommonMsg> pos) {
+		if(ColUtil.isEmpty(pos)) {
 			return null;
 		} else {
 			List<ElecCommonMsgForm> result = new ArrayList<ElecCommonMsgForm>();
-			for(ElecCommonMsg msg : entities) {
+			for(ElecCommonMsg msg : pos) {
 				if(msg == null) {
 					continue;
 				}
@@ -78,11 +78,6 @@ public class ElecCommonMsgServiceImpl extends CommonServiceImpl<ElecCommonMsg, E
 			}
 			return result;
 		}
-	}
-
-	@Override
-	public List<ElecCommonMsgForm> changePo2VoList(List<ElecCommonMsg> pos) {
-		return null;
 	}
 	
 

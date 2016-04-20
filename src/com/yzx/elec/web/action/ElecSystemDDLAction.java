@@ -1,6 +1,5 @@
 package com.yzx.elec.web.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.opensymphony.xwork2.ModelDriven;
@@ -21,8 +20,8 @@ public class ElecSystemDDLAction extends BaseAction implements ModelDriven<ElecS
 
 	
 	public String home() {
-		List<String> keywords = service.findKeyWord();
-		request.setAttribute("systemlist", changePo2Vo(keywords));
+		List<ElecSystemDDLForm> keywords = service.findKeyWord();
+		request.setAttribute("systemlist", keywords);
 		return "home";
 	}
 	
@@ -36,19 +35,4 @@ public class ElecSystemDDLAction extends BaseAction implements ModelDriven<ElecS
 		return "save";
 	}
 
-
-	private List<ElecSystemDDLForm> changePo2Vo(List<String> keywords) {
-		if(keywords == null) {
-			return null;
-		}
-		ArrayList<ElecSystemDDLForm> vos = new ArrayList<ElecSystemDDLForm>();
-		for(String kw : keywords) {
-			ElecSystemDDLForm form = new ElecSystemDDLForm();
-			form.setKeyword(kw);
-			vos.add(form);
-		}
-		
-		return vos;
-	}
-	
 }

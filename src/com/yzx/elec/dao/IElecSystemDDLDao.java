@@ -11,5 +11,10 @@ public interface IElecSystemDDLDao extends ICommonDao<ElecSystemDDL> {
 	 * 查询数据字典中的关键字
 	 */
 	public List<String> findKeywords();
+
+	/**
+	 * 根据关键字(keyword)以及操作码(ddlCode)得到数据字典名称
+	 */
+	public String getDDLName(String keyword, String ddlCode);
 	
 }

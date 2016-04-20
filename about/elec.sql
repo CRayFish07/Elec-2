@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: elec
 Target Host: localhost
 Target Database: elec
-Date: 2016/4/13 20:42:29
+Date: 2016/4/20 21:00:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,10 +25,10 @@ CREATE TABLE `elec_commonmsg` (
 -- ----------------------------
 DROP TABLE IF EXISTS `elec_systemddl`;
 CREATE TABLE `elec_systemddl` (
-  `seqId` int(11) NOT NULL COMMENT 'æ´å¿“åªid',
-  `keyword` varchar(20) NOT NULL COMMENT 'ç»«è¯²ç€·éæŠ½æ•­ç€›ï¿½',
-  `ddlCode` int(11) NOT NULL COMMENT 'é¿å¶„ç¶”code',
-  `ddlname` varchar(30) NOT NULL COMMENT 'é¿å¶„ç¶”éšï¿½',
+  `seqId` int(11) NOT NULL COMMENT 'ĞòÁĞid',
+  `keyword` varchar(20) NOT NULL COMMENT 'ÀàĞÍ¹Ø¼ü×Ö',
+  `ddlCode` int(11) NOT NULL COMMENT '²Ù×÷code',
+  `ddlname` varchar(30) NOT NULL COMMENT '²Ù×÷Ãû',
   PRIMARY KEY (`seqId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -49,30 +49,40 @@ CREATE TABLE `elec_text` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Table structure for elec_user
+-- ----------------------------
+DROP TABLE IF EXISTS `elec_user`;
+CREATE TABLE `elec_user` (
+  `UserId` varchar(50) NOT NULL COMMENT 'ÓÃ»§id',
+  `JctId` varchar(50) NOT NULL COMMENT 'ËùÊôµ¥Î»code',
+  `UserName` varchar(50) NOT NULL COMMENT 'ÓÃ»§ĞÕÃû',
+  `LogonName` varchar(50) NOT NULL COMMENT 'µÇÂ¼Ãû',
+  `LogonPassword` varchar(50) NOT NULL COMMENT 'µÇÂ¼ÃÜÂë',
+  `SexId` varchar(10) NOT NULL COMMENT 'ĞÔ±ğ',
+  `BirthDay` datetime DEFAULT NULL COMMENT 'ÉúÈÕ',
+  `Address` varchar(100) DEFAULT NULL COMMENT 'µØÖ·',
+  `ContactTel` varchar(50) DEFAULT NULL COMMENT 'ÁªÏµµç»°',
+  `Email` varchar(50) DEFAULT NULL COMMENT 'ÓÊÏä',
+  `Mobile` varchar(50) DEFAULT NULL COMMENT 'ÊÖ»úºÅ',
+  `IsDuty` varchar(10) DEFAULT NULL COMMENT 'ÊÇ·ñÔÚÖ°',
+  `OnDutyDate` datetime DEFAULT NULL COMMENT 'ÈëÖ°Ê±¼ä',
+  `OffDutyDate` datetime DEFAULT NULL COMMENT 'ÀëÖ°Ê±¼ä',
+  `remark` varchar(500) DEFAULT NULL COMMENT '±¸×¢',
+  PRIMARY KEY (`UserId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
 -- Records 
 -- ----------------------------
-INSERT INTO `elec_commonmsg` VALUES ('1', 'æ©æ¨ºã‚½å§ï½…çˆ¶', 'ç’¨å±¼æŠ€æ¶“å¶†î„œç”¯ï¿½', '2016-03-06 13:47:51');
+INSERT INTO `elec_commonmsg` VALUES ('1', 'è¿˜å¥½æ­£å¸¸', 'è²Œä¼¼ä¸æ­£å¸¸', '2016-03-06 13:47:51');
 INSERT INTO `elec_commonmsg` VALUES ('2', 'fdsgdfs', 'gfh', '2016-03-26 11:15:57');
-INSERT INTO `elec_text` VALUES ('40288ac8527775a201527775af8a0001', 'yzx', '2016-01-25 14:25:46', 'å¨´å¬­ç˜¯mark', null, null, null, null);
-
-----------------------------------
----- Elec_User
-----------------------------------
-DROP TABLE IF EXISTS Elec_User;
-CREATE TABLE Elec_User (
-	UserId varchar(50) not null primary key comment 'ç”¨æˆ·id',
-	JctId varchar(50) not null comment 'æ‰€å±å•ä½code',
-	UserName varchar(50) not null comment 'ç”¨æˆ·å§“å',
-	LogonName varchar(50) not null comment 'ç™»å½•å',
-	LogonPassword varchar(50) not null comment 'ç™»å½•å¯†ç ',
-	SexId varchar(10) not null comment 'æ€§åˆ«',
-	BirthDay datetime null comment 'ç”Ÿæ—¥',
-	Address varchar(100) null comment 'åœ°å€',
-	ContactTel varchar(50) null comment 'è”ç³»ç”µè¯',
-	Email varchar(50) null comment 'é‚®ç®±',
-	Mobile varchar(50) null comment 'æ‰‹æœºå·',
-	IsDuty varchar(10) null comment 'æ˜¯å¦åœ¨èŒ',
-	OnDutyDate datetime null comment 'å…¥èŒæ—¶é—´',
-	OffDutyDate datetime null comment 'ç¦»èŒæ—¶é—´',
-	remark varchar(500) null comment 'å¤‡æ³¨'
-) default charset='utf8';
+INSERT INTO `elec_systemddl` VALUES ('1', 'æ‰€å±å•ä½', '1', 'é‡åº†');
+INSERT INTO `elec_systemddl` VALUES ('2', 'æ‰€å±å•ä½', '2', 'ä¸Šæµ·');
+INSERT INTO `elec_systemddl` VALUES ('3', 'æ€§åˆ«', '1', 'å¥³');
+INSERT INTO `elec_systemddl` VALUES ('4', 'æ€§åˆ«', '2', 'ç”·');
+INSERT INTO `elec_systemddl` VALUES ('5', 'æ˜¯å¦åœ¨èŒ', '1', 'åœ¨èŒ');
+INSERT INTO `elec_systemddl` VALUES ('6', 'æ˜¯å¦åœ¨èŒ', '2', 'ç¦»èŒ');
+INSERT INTO `elec_systemddl` VALUES ('7', 'æ‰€å±å•ä½', '3', 'åŒ—äº¬');
+INSERT INTO `elec_text` VALUES ('40288ac8527775a201527775af8a0001', 'yzx', '2016-01-25 14:25:46', 'æµ‹è¯•mark', null, null, null, null);
+INSERT INTO `elec_user` VALUES ('1', '1', 'å¼ ä¸‰', 'zhangsan', '123456', '1', null, null, '155556666', null, null, '1', '2016-04-20 13:44:42', null, null);
+INSERT INTO `elec_user` VALUES ('2', '2', 'æå››', 'lisi', '1234567', '2', null, null, '125478965', null, null, '1', '2016-04-21 13:45:39', null, null);

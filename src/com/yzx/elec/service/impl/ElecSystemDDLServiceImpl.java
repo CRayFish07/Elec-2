@@ -57,11 +57,11 @@ public class ElecSystemDDLServiceImpl extends CommonServiceImpl<ElecSystemDDL, E
 	}
 
 	@Override
-	public List<String> findKeyWord() {
+	public List<ElecSystemDDLForm> findKeyWord() {
 		IElecSystemDDLDao ddlDao = (IElecSystemDDLDao)dao;
 		
 		List<String> keyWords = ddlDao.findKeywords();
-		return keyWords;
+		return changePo2VoListFromListString(keyWords);
 	}
 
 	@Transactional(readOnly=false,isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED)
@@ -131,10 +131,50 @@ public class ElecSystemDDLServiceImpl extends CommonServiceImpl<ElecSystemDDL, E
 		
 	}
 
-	@Override
 	public List<ElecSystemDDLForm> changePo2VoList(List<ElecSystemDDL> pos) {
-		// TODO 自动生成的方法存根
-		return null;
+		if(pos == null) {
+			return null;
+		}
+		
+		ArrayList<ElecSystemDDLForm> result = new ArrayList<ElecSystemDDLForm>();
+		for(ElecSystemDDL ddl : pos) {
+			ElecSystemDDLForm form = new ElecSystemDDLForm();
+			form.setSeqId(ddl.getSeqId());
+			form.setDdlCode(ddl.getDdlCode());
+			form.setDdlname(ddl.getDdlname());
+			form.setKeyword(ddl.getKeyword());
+			result.add(form);
+		}
+		return result;
 	}
 
+	public List<ElecSystemDDLForm> changePo2VoListFromListString(List<String> pos) {
+		if(pos == null) {
+			return null;
+		}
+		
+		ArrayList<ElecSystemDDLForm> result = new ArrayList<ElecSystemDDLForm>();
+		for(String keyword : pos) {
+			ElecSystemDDLForm form = new ElecSystemDDLForm();
+			form.setKeyword(keyword);
+			result.add(form);
+		}
+		return result;
+	}
+
+	@Override
+	public List<ElecSystemDDLForm> findDdlListByKeyword(String keyword) {
+		StringBuilder conSql = new StringBuilder();
+		conSql.append(" and o.keyword=?");
+		ArrayList<String> params = new ArrayList<String>(1);
+//		params.add("'"+keyword+"'");
+		params.add(keyword);
+		
+		LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+		orderby.put("ddlCode", "asc");
+		
+		List<ElecSystemDDL> ddlList = dao.findObjectsByConditions(conSql.toString(), params, orderby);
+		
+		return changePo2VoList(ddlList);
+	}
 }

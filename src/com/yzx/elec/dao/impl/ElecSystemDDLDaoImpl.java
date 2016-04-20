@@ -17,4 +17,15 @@ public class ElecSystemDDLDaoImpl extends CommonDaoImpl<ElecSystemDDL> implement
 		return (List<String>)getHibernateTemplate().find(hql);
 	}
 
+	@Override
+	public String getDDLName(String keyword, String ddlCode) {
+		String hql = "select o.ddlname from ElecSystemDDL o";
+		hql += " where o.keyword = '"+keyword+"'";
+		hql += " and o.ddlCode = '"+ddlCode+"'";
+		
+		@SuppressWarnings("rawtypes")
+		List list = ht.find(hql);
+		return (String)list.get(0);
+	}
+
 }

@@ -11,10 +11,17 @@ public interface IElecSystemDDlService extends ICommonService<ElecSystemDDL, Ele
 	/**
 	 * 查询数据字典关键字
 	 */
-	public List<String> findKeyWord();
+	public List<ElecSystemDDLForm> findKeyWord();
 
 	/**
 	 * 保存数据字典
 	 */
 	public void saveSystemDDLList(ElecSystemDDLForm form);
+
+	/**
+	 * 根据关键字查找数据项列表
+	 * @param sex 关键字
+	 * @return 数据项列表
+	 */
+	public List<ElecSystemDDLForm> findDdlListByKeyword(String sex);
 }
