@@ -17,8 +17,8 @@ public abstract class CommonServiceImpl<T, V> implements ICommonService<T, V> {
 	
 	@Transactional(readOnly=false,isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED)
 	@Override
-	public void save(T object) {
-		dao.save(object);
+	public void save(V object) {
+		
 	}
 
 	@Transactional(readOnly=false,isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED)

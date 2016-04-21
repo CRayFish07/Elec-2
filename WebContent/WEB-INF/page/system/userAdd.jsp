@@ -66,14 +66,14 @@
 		 }
 	   }
 		
-	   if(theForm.empRemark.value.length>250){
+	   if(theForm.remark.value.length>250){
      
         	alert("备注字符长度不能超过250");
-			theForm.empRemark.focus();
+			theForm.remark.focus();
 			return false; 
         }
 		 
-		 document.Form1.action="saveUser.do";
+		 document.Form1.action="system/elecUserAction_save.do";
 		 document.Form1.submit();	 		 
 		 refreshOpener();
 	}
@@ -97,8 +97,9 @@
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_01">登&nbsp;&nbsp;录&nbsp;&nbsp;名：<font
 					color="#FF0000">*</font></td>
-				<td class="ta_01" bgColor="#ffffff"><input name="logonName"
-					type="text" maxlength="25" id="logonName" size="20"></td>
+				<td class="ta_01" bgColor="#ffffff">
+					<s:textfield name="logonName" id="logonName" maxlength="25" size="20" ></s:textfield>	
+				</td>
 				<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">用户姓名：<font
 					color="#FF0000">*</font></td>
 				<td class="ta_01" bgColor="#ffffff">
@@ -131,7 +132,7 @@
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_01">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
 				<td class="ta_01" bgColor="#ffffff">
-					<s:password name="logonPwd" id="logonPwd" maxlength="25" size="22"></s:password>
+					<s:password name="logonPassword" id="logonPassword" maxlength="25" size="22"></s:password>
 				</td>
 				<td align="center" bgColor="#f5fafe" class="ta_01">确认密码：</td>
 				<td class="ta_01" bgColor="#ffffff">
@@ -142,7 +143,7 @@
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_01">出生日期：</td>
 				<td class="ta_01" bgColor="#ffffff">
-					<s:textfield name="birthday" id="birthday" maxlength="50" size="20" onclick="JavaScript:calendar(document.Form1.birthday)" ></s:textfield>	
+					<s:textfield name="birthDay" id="birthday" maxlength="50" size="20" onclick="JavaScript:calendar(document.Form1.birthday)" ></s:textfield>	
 				</td>
 				<td align="center" bgColor="#f5fafe" class="ta_01">联系地址：</td>
 				<td class="ta_01" bgColor="#ffffff">
@@ -177,7 +178,7 @@
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_01">入职日期：</td>
 				<td class="ta_01" bgColor="#ffffff">
-					<s:textfield name="ondutydate" id="ondutydate" maxlength="50" size="20" onclick="JavaScript:calendar(document.Form1.ondutydate)"></s:textfield>
+					<s:textfield name="onDutyDate" id="onDutyDate" maxlength="50" size="20" onclick="JavaScript:calendar(document.Form1.ondutydate)"></s:textfield>
 				</td>
 				<td align="center" bgColor="#ffffff" class="ta_01"></td>
 				<td class="ta_01" bgColor="#ffffff"></td>
@@ -186,7 +187,7 @@
 			<TR>
 				<TD class="ta_01" align="center" bgColor="#f5fafe">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</TD>
 				<TD class="ta_01" bgColor="#ffffff" colSpan="3">
-					<s:textarea name="empRemark" cssStyle="WIDTH:95%" rows="4" cols="52" id="empRemark"></s:textarea>
+					<s:textarea name="remark" cssStyle="WIDTH:95%" rows="4" cols="52" id="remark"></s:textarea>
 				</TD>
 			</TR>
 			<TR>

@@ -4,11 +4,18 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * 通用服务接口
+ * @author Administrator
+ *
+ * @param <T> po类型
+ * @param <V> vo类型
+ */
 public interface ICommonService<T, V> {
 	/**
 	 * 存储一个实体对象
 	 */
-	public void save(T entity);
+	public void save(V entity);
 
 	/**
 	 * 更新一个实体对象

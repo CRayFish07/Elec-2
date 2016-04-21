@@ -79,6 +79,25 @@ public class ElecCommonMsgServiceImpl extends CommonServiceImpl<ElecCommonMsg, E
 			return result;
 		}
 	}
+
+	@Override
+	public void save(ElecCommonMsgForm form) {
+		if(form == null) {
+			return;
+		}
+		dao.save(vo2po(form));
+	}
 	
+	private ElecCommonMsg vo2po(ElecCommonMsgForm form1) {
+		ElecCommonMsg entity = new ElecCommonMsg();
+		entity.setStationRun(form1.getStationRun());
+		entity.setDevRun(form1.getDevRun());
+		if(form1.getCreateDate() == null) {
+			entity.setCreateDate(new Date());
+		} else {
+			entity.setCreateDate(form1.getCreateDate());
+		}
+		return entity;
+	}
 
 }

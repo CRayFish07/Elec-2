@@ -6,6 +6,9 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yan.util.StringUtil;
 import com.yzx.elec.dao.ICommonDao;
@@ -15,6 +18,7 @@ import com.yzx.elec.pojo.ElecUser;
 import com.yzx.elec.service.IElecUserService;
 import com.yzx.elec.web.form.ElecUserForm;
 
+@Transactional(readOnly=true)
 @Service(IElecUserService.SERVICE_NAME)
 public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserForm> implements IElecUserService {
 
@@ -66,4 +70,28 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 		return result;
 	}
 
+	@Transactional(isolation=Isolation.DEFAULT,readOnly=false,propagation=Propagation.REQUIRED)
+	@Override
+	public void save(ElecUserForm form) {
+		dao.save(vo2Po(form));
+	}
+	
+	private ElecUser vo2Po(ElecUserForm form) {
+		ElecUser user = new ElecUser();
+		user.setJctId(form.getJctId());
+		user.setUserName(form.getUserName());
+		user.setLogonName(form.getLogonName());
+		user.setLogonPassword(form.getLogonPassword());
+		user.setSexId(form.getSexId());
+		user.setBirthDay(form.getBirthDay());
+		user.setAddress(form.getAddress());
+		user.setContactTel(form.getContactTel());
+		user.setEmail(form.getEmail());
+		user.setMobile(form.getMobile());
+		user.setIsDuty(form.getIsDuty());
+		user.setOnDutyDate(form.getOnDutyDate());
+		user.setRemark(form.getRemark());
+		
+		return user;
+	}
 }

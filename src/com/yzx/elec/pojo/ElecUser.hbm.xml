@@ -6,7 +6,7 @@
     <class name="com.yzx.elec.pojo.ElecUser" table="elec_user">
         <id name="userId" type="string">
             <column name="UserId" length="50" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="jctId" type="string">
             <column name="JctId" length="50" not-null="true" />

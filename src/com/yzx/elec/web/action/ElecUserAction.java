@@ -41,4 +41,9 @@ public class ElecUserAction extends BaseAction implements ModelDriven<ElecUserFo
 		request.setAttribute("isDutyList", isDutyDdl);
 		return "add";
 	}
+	
+	public String save() {
+		service.save(form);
+		return "save";
+	}
 }
