@@ -25,10 +25,10 @@ CREATE TABLE `elec_commonmsg` (
 -- ----------------------------
 DROP TABLE IF EXISTS `elec_systemddl`;
 CREATE TABLE `elec_systemddl` (
-  `seqId` int(11) NOT NULL COMMENT 'ÐòÁÐid',
-  `keyword` varchar(20) NOT NULL COMMENT 'ÀàÐÍ¹Ø¼ü×Ö',
-  `ddlCode` int(11) NOT NULL COMMENT '²Ù×÷code',
-  `ddlname` varchar(30) NOT NULL COMMENT '²Ù×÷Ãû',
+  `seqId` int(11) NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½id',
+  `keyword` varchar(20) NOT NULL COMMENT 'ï¿½ï¿½ï¿½Í¹Ø¼ï¿½ï¿½ï¿½',
+  `ddlCode` int(11) NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½code',
+  `ddlname` varchar(30) NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
   PRIMARY KEY (`seqId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -53,21 +53,21 @@ CREATE TABLE `elec_text` (
 -- ----------------------------
 DROP TABLE IF EXISTS `elec_user`;
 CREATE TABLE `elec_user` (
-  `UserId` varchar(50) NOT NULL COMMENT 'ÓÃ»§id',
-  `JctId` varchar(50) NOT NULL COMMENT 'ËùÊôµ¥Î»code',
-  `UserName` varchar(50) NOT NULL COMMENT 'ÓÃ»§ÐÕÃû',
-  `LogonName` varchar(50) NOT NULL COMMENT 'µÇÂ¼Ãû',
-  `LogonPassword` varchar(50) NOT NULL COMMENT 'µÇÂ¼ÃÜÂë',
-  `SexId` varchar(10) NOT NULL COMMENT 'ÐÔ±ð',
-  `BirthDay` datetime DEFAULT NULL COMMENT 'ÉúÈÕ',
-  `Address` varchar(100) DEFAULT NULL COMMENT 'µØÖ·',
-  `ContactTel` varchar(50) DEFAULT NULL COMMENT 'ÁªÏµµç»°',
-  `Email` varchar(50) DEFAULT NULL COMMENT 'ÓÊÏä',
-  `Mobile` varchar(50) DEFAULT NULL COMMENT 'ÊÖ»úºÅ',
-  `IsDuty` varchar(10) DEFAULT NULL COMMENT 'ÊÇ·ñÔÚÖ°',
-  `OnDutyDate` datetime DEFAULT NULL COMMENT 'ÈëÖ°Ê±¼ä',
-  `OffDutyDate` datetime DEFAULT NULL COMMENT 'ÀëÖ°Ê±¼ä',
-  `remark` varchar(500) DEFAULT NULL COMMENT '±¸×¢',
+  `UserId` int NOT NULL COMMENT 'ï¿½Ã»ï¿½id',
+  `JctId` varchar(50) NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»code',
+  `UserName` varchar(50) NOT NULL COMMENT 'ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½',
+  `LogonName` varchar(50) NOT NULL COMMENT 'ï¿½ï¿½Â¼ï¿½ï¿½',
+  `LogonPassword` varchar(50) NOT NULL COMMENT 'ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½',
+  `SexId` varchar(10) NOT NULL COMMENT 'ï¿½Ô±ï¿½',
+  `BirthDay` datetime DEFAULT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½',
+  `Address` varchar(100) DEFAULT NULL COMMENT 'ï¿½ï¿½Ö·',
+  `ContactTel` varchar(50) DEFAULT NULL COMMENT 'ï¿½ï¿½Ïµï¿½ç»°',
+  `Email` varchar(50) DEFAULT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½',
+  `Mobile` varchar(50) DEFAULT NULL COMMENT 'ï¿½Ö»ï¿½ï¿½ï¿½',
+  `IsDuty` varchar(10) DEFAULT NULL COMMENT 'ï¿½Ç·ï¿½ï¿½ï¿½Ö°',
+  `OnDutyDate` datetime DEFAULT NULL COMMENT 'ï¿½ï¿½Ö°Ê±ï¿½ï¿½',
+  `OffDutyDate` datetime DEFAULT NULL COMMENT 'ï¿½ï¿½Ö°Ê±ï¿½ï¿½',
+  `remark` varchar(500) DEFAULT NULL COMMENT 'ï¿½ï¿½×¢',
   PRIMARY KEY (`UserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

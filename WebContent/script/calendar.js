@@ -301,7 +301,8 @@ function returnDate() //根据日期格式等返回用户选定的日期
     if(WebCalendar.objExport)
     {
         var returnValue;
-        var a = (arguments.length==0) ? WebCalendar.day[this.id.substr(8)].split("/") : arguments[0].split("/");
+//        var a = (arguments.length==0) ? WebCalendar.day[this.id.substr(8)].split("/") : arguments[0].split("/");
+        var a = WebCalendar.day[this.id.substr(8)].split("/");
         var d = WebCalendar.format.match(/^(\w{4})(-|\/|.|)(\w{1,2})\2(\w{1,2})$/);
         if(d==null){alert("你设定的日期输出格式不对！\r\n\r\n请重新定义 WebCalendar.format ！"); return false;}
         var flag = d[3].length==2 || d[4].length==2; //判断返回的日期格式是否要补零

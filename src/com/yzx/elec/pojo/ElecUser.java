@@ -10,7 +10,7 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class ElecUser implements java.io.Serializable {
 
-	private String userId;
+	private int userId;
 	private String jctId;
 	private String userName;
 	private String logonName;
@@ -29,7 +29,7 @@ public class ElecUser implements java.io.Serializable {
 	public ElecUser() {
 	}
 
-	public ElecUser(String userId, String jctId, String userName,
+	public ElecUser(int userId, String jctId, String userName,
 			String logonName, String logonPassword, String sexId) {
 		this.userId = userId;
 		this.jctId = jctId;
@@ -39,7 +39,7 @@ public class ElecUser implements java.io.Serializable {
 		this.sexId = sexId;
 	}
 
-	public ElecUser(String userId, String jctId, String userName,
+	public ElecUser(int userId, String jctId, String userName,
 			String logonName, String logonPassword, String sexId,
 			Date birthDay, String address, String contactTel, String email,
 			String mobile, String isDuty, Date onDutyDate, Date offDutyDate,
@@ -61,11 +61,11 @@ public class ElecUser implements java.io.Serializable {
 		this.remark = remark;
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return this.userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 

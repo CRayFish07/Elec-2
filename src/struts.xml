@@ -30,6 +30,10 @@
         <action name="elecUserAction_*" class="com.yzx.elec.web.action.ElecUserAction" method="{1}">
             <result name="home">/WEB-INF/page/system/userIndex.jsp</result>
             <result name="add">/WEB-INF/page/system/userAdd.jsp</result>
+            <result name="save" type="redirectAction">
+            	<param name="actionName">elecUserAction_add</param>
+            	<param name="nameSpace">/system</param>
+            </result>
         </action>
     </package>
 	<package name="menu" extends="struts-default" namespace="/menu">

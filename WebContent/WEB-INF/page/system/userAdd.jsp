@@ -34,8 +34,7 @@
 			return false;
 		}
 	
-        if(theForm.logonPwd.value!=theForm.passwordconfirm.value){
-		
+        if(theForm.logonPassword.value!=theForm.passwordconfirm.value){
 		  alert("两次输入密码不一致，请重新输入");
 		  return;
 		}
@@ -143,7 +142,7 @@
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_01">出生日期：</td>
 				<td class="ta_01" bgColor="#ffffff">
-					<s:textfield name="birthDay" id="birthday" maxlength="50" size="20" onclick="JavaScript:calendar(document.Form1.birthday)" ></s:textfield>	
+					<s:textfield name="birthDay" id="birthday" maxlength="50" size="20" onclick="JavaScript:calendar(document.Form1.birthDay)" ></s:textfield>	
 				</td>
 				<td align="center" bgColor="#f5fafe" class="ta_01">联系地址：</td>
 				<td class="ta_01" bgColor="#ffffff">
@@ -178,7 +177,7 @@
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_01">入职日期：</td>
 				<td class="ta_01" bgColor="#ffffff">
-					<s:textfield name="onDutyDate" id="onDutyDate" maxlength="50" size="20" onclick="JavaScript:calendar(document.Form1.ondutydate)"></s:textfield>
+					<s:textfield name="onDutyDate" id="onDutyDate" maxlength="50" size="20" onclick="JavaScript:calendar(document.Form1.onDutyDate)"></s:textfield>
 				</td>
 				<td align="center" bgColor="#ffffff" class="ta_01"></td>
 				<td class="ta_01" bgColor="#ffffff"></td>
