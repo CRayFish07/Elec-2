@@ -1,5 +1,6 @@
 package com.yzx.elec.service.impl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,9 @@ import com.yzx.elec.web.form.ElecUserForm;
 @Transactional(readOnly=true)
 @Service(IElecUserService.SERVICE_NAME)
 public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserForm> implements IElecUserService {
-
+	private static final String IS_DUTY = "是否在职";
+	private static final String SEX = "性别";
+	
 	@Override
 	@Resource(name=IElecUserDao.DAO_NAME)
 	protected void setDao(ICommonDao<ElecUser> dao) {
@@ -47,9 +50,6 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 		return changePo2VoList(dao.findObjectsByConditions(sb == null ? null : sb.toString(), params, null));
 	}
 	
-	private static final String IS_DUTY = "是否在职";
-	private static final String SEX = "性别";
-
 	public List<ElecUserForm> changePo2VoList(List<ElecUser> pos) {
 		if(pos == null) {
 			return null;
@@ -93,5 +93,34 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 		user.setRemark(form.getRemark());
 		
 		return user;
+	}
+	
+	private ElecUserForm po2Vo(ElecUser user) {
+		if(user == null) {
+			return null;
+		}
+		ElecUserForm form = new ElecUserForm();
+		form.setUserId(user.getUserId());
+		form.setJctId(user.getJctId());
+		form.setUserName(user.getUserName());
+		form.setLogonName(user.getLogonName());
+		form.setLogonPassword(user.getLogonPassword());
+		form.setSexId(user.getSexId());
+		form.setBirthDay(user.getBirthDay());
+		form.setAddress(user.getAddress());
+		form.setContactTel(user.getContactTel());
+		form.setEmail(user.getEmail());
+		form.setMobile(user.getMobile());
+		form.setIsDuty(user.getIsDuty());
+		form.setOnDutyDate(user.getOnDutyDate());
+		form.setOffDutyDate(user.getOffDutyDate());
+		form.setRemark(user.getRemark());
+		return form;
+	}
+
+	@Override
+	public ElecUserForm findObjectById(Serializable id) {
+		ElecUser user = dao.findObjectById(id);
+		return po2Vo(user);
 	}
 }

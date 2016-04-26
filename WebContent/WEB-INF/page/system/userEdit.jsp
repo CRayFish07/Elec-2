@@ -1,7 +1,7 @@
 
 
 <%@ page language="java" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 
 <html>
@@ -81,7 +81,7 @@
 
   
  <body>
-    <form name="Form1" method="post">	
+    <s:form name="Form1" method="post">	
     <br>
     
     <table cellSpacing="1" cellPadding="5" width="90%" align="center" bgColor="#eeeeee" style="border:1px solid #8ba7e3" border="0">
@@ -91,12 +91,12 @@
 		 <font face="宋体" size="2"><strong>编辑用户</strong></font>
 		</td>
     </tr>
-       <input name="userid"  type="hidden" value="ff808081110677790111070ccffe0001">
+    	<s:hidden name="userId" id="userId"></s:hidden>
        <input name="isAdmin" type="hidden" value="1">
      <tr>
          <td align="center" bgColor="#f5fafe" class="ta_01">登&nbsp;&nbsp;录&nbsp;&nbsp;名：
          <td class="ta_01" bgColor="#ffffff">
-         <input name="logonName" type="text" maxlength="25" id="logonName"  value="sunhy"  size=20 readonly="true">
+         <s:textfield name="logonName" id="logonName" maxlength="25" size="20" ></s:textfield>
           <font color="#FF0000">*</font></td>
          <td width="18%" align="center" bgColor="#f5fafe" class="ta_01">用户姓名：
 
@@ -207,7 +207,7 @@
 	</td>
 </tr>
 </table>　
-</form>
+</s:form>
 
 </body>
 </html>

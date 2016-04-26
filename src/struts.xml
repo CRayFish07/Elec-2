@@ -34,6 +34,7 @@
             	<param name="actionName">elecUserAction_add</param>
             	<param name="nameSpace">/system</param>
             </result>
+            <result name="edit">/WEB-INF/page/system/userEdit.jsp</result>
         </action>
     </package>
 	<package name="menu" extends="struts-default" namespace="/menu">

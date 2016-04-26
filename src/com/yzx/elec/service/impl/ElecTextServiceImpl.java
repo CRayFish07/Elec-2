@@ -1,5 +1,6 @@
 package com.yzx.elec.service.impl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -84,6 +85,12 @@ public class ElecTextServiceImpl extends CommonServiceImpl<ElecText, ElecTextFor
 		et.setTextremark(form1.getTextremark());
 		
 		return et;
+	}
+
+	@Override
+	public ElecTextForm findObjectById(Serializable id) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 
 }

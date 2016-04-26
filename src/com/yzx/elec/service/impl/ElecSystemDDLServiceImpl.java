@@ -1,5 +1,6 @@
 package com.yzx.elec.service.impl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -176,5 +177,11 @@ public class ElecSystemDDLServiceImpl extends CommonServiceImpl<ElecSystemDDL, E
 		List<ElecSystemDDL> ddlList = dao.findObjectsByConditions(conSql.toString(), params, orderby);
 		
 		return changePo2VoList(ddlList);
+	}
+
+	@Override
+	public ElecSystemDDLForm findObjectById(Serializable id) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 }

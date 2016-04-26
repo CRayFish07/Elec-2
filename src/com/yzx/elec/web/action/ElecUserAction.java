@@ -2,6 +2,7 @@ package com.yzx.elec.web.action;
 
 import java.util.List;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yzx.elec.container.ServiceProvider;
 import com.yzx.elec.service.IElecSystemDDlService;
@@ -33,17 +34,29 @@ public class ElecUserAction extends BaseAction implements ModelDriven<ElecUserFo
 	
 	public String add() {
 		//查询数据字典，查询性别，所属单位，以及是否在职，在数据字典中的编号以及名称
-		List<ElecSystemDDLForm> sexDdl = ddlService.findDdlListByKeyword(SEX);
-		List<ElecSystemDDLForm> jctDdl = ddlService.findDdlListByKeyword(JCT);
-		List<ElecSystemDDLForm> isDutyDdl = ddlService.findDdlListByKeyword(IS_DUTY);
-		request.setAttribute("sexList", sexDdl);
-		request.setAttribute("jctList", jctDdl);
-		request.setAttribute("isDutyList", isDutyDdl);
+		initSystemDDL();
 		return "add";
 	}
 	
 	public String save() {
 		service.save(form);
 		return "save";
+	}
+	
+	public String edit() {
+		ElecUserForm userData = service.findObjectById(form.getUserId());
+		ActionContext.getContext().getValueStack().push(userData);
+		initSystemDDL();
+		return "edit";
+	}
+
+
+	private void initSystemDDL() {
+		List<ElecSystemDDLForm> sexDdl = ddlService.findDdlListByKeyword(SEX);
+		List<ElecSystemDDLForm> jctDdl = ddlService.findDdlListByKeyword(JCT);
+		List<ElecSystemDDLForm> isDutyDdl = ddlService.findDdlListByKeyword(IS_DUTY);
+		request.setAttribute("sexList", sexDdl);
+		request.setAttribute("jctList", jctDdl);
+		request.setAttribute("isDutyList", isDutyDdl);
 	}
 }

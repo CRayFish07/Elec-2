@@ -103,12 +103,12 @@
 										</td>
 										
 										<td align="center" style="HEIGHT: 22px" align="center" width="10%">																	
-										   <a href="#" onclick="openWindow('userEdit.jsp?userid=<s:property value="%{#user.userId}"/>','700','400');">
+										   <a href="#" onclick="openWindow('system/elecUserAction_edit.do?userid=<s:property value="%{#user.userId}"/>','700','400');">
 										   <img src="${pageContext.request.contextPath }/images/edit.gif" border="0" style="CURSOR:hand"></a>													
 										</td>
 										
 										<td align="center" style="HEIGHT: 22px" align="center" width="10%">
-											<a href="removeuser.do?userid=<s:property value='%{#user.userId}'/>" onclick="return confirm('你确定要删除  <s:property value="%{#user.userName}"/>？')">
+											<a href="removeuser.do?userId=<s:property value='%{#user.userId}'/>" onclick="return confirm('你确定要删除  <s:property value="%{#user.userName}"/>？')">
 											<img src="${pageContext.request.contextPath }/images/delete.gif" width="16" height="16" border="0" style="CURSOR:hand"></a>												
 										</td>
 									</tr>

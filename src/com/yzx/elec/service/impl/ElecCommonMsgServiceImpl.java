@@ -1,5 +1,6 @@
 package com.yzx.elec.service.impl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -98,6 +99,11 @@ public class ElecCommonMsgServiceImpl extends CommonServiceImpl<ElecCommonMsg, E
 			entity.setCreateDate(form1.getCreateDate());
 		}
 		return entity;
+	}
+
+	@Override
+	public ElecCommonMsgForm findObjectById(Serializable id) {
+		return null;
 	}
 
 }

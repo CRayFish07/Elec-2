@@ -26,7 +26,7 @@ public interface ICommonService<T, V> {
 	/**
 	 * 根据id查找一个实体
 	 */
-	public T findObjectById(Serializable id);
+	public V findObjectById(Serializable id);
 
 	/**
 	 * 根据id数组查找实体数组

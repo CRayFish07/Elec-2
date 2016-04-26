@@ -28,8 +28,8 @@ public abstract class CommonServiceImpl<T, V> implements ICommonService<T, V> {
 	}
 
 	@Override
-	public T findObjectById(Serializable id) {
-		return dao.findObjectById(id);
+	public V findObjectById(Serializable id) {
+		return null;
 	}
 
 	@Transactional(readOnly=false,isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED)
