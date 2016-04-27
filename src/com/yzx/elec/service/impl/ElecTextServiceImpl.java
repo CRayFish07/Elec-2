@@ -1,6 +1,5 @@
 package com.yzx.elec.service.impl;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -88,8 +87,7 @@ public class ElecTextServiceImpl extends CommonServiceImpl<ElecText, ElecTextFor
 	}
 
 	@Override
-	public ElecTextForm findObjectById(Serializable id) {
-		// TODO 自动生成的方法存根
+	public ElecTextForm findObjectByVo(ElecTextForm form) {
 		return null;
 	}
 

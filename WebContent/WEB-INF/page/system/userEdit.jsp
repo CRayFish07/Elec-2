@@ -31,7 +31,7 @@
 			return false;
 		}
 	
-        if(theForm.logonPwd.value!=theForm.passwordconfirm.value){
+        if(theForm.logonPassword.value!=theForm.passwordconfirm.value){
 		
 		  alert("两次输入密码不一致，请重新输入");
 		  return;
@@ -63,19 +63,23 @@
 		 }
 	   }
 		
-	   if(theForm.empRemark.value.length>250){
+	   if(theForm.remark.value.length>250){
      
         	alert("备注字符长度不能超过250");
-			theForm.empRemark.focus();
+			theForm.remark.focus();
 			return false; 
         }
 		 
-	   document.Form1.action="editUser.do";
+	   document.Form1.action="system/elecUserAction_save.do";
 	   document.Form1.submit();
 	   refreshOpener();
 	  	
 	}
 	
+	window.onload = function() {
+		var password = document.getElementById("logonPassword").value;
+		document.getElementById("passwordconfirm").value = password;
+	}
 </script>
 </head>
 
@@ -92,16 +96,14 @@
 		</td>
     </tr>
     	<s:hidden name="userId" id="userId"></s:hidden>
-       <input name="isAdmin" type="hidden" value="1">
      <tr>
          <td align="center" bgColor="#f5fafe" class="ta_01">登&nbsp;&nbsp;录&nbsp;&nbsp;名：
          <td class="ta_01" bgColor="#ffffff">
-         <s:textfield name="logonName" id="logonName" maxlength="25" size="20" ></s:textfield>
+         <s:textfield name="logonName" id="logonName" maxlength="25" size="20" readonly="true"></s:textfield>
           <font color="#FF0000">*</font></td>
          <td width="18%" align="center" bgColor="#f5fafe" class="ta_01">用户姓名：
-
-
-         <td class="ta_01" bgColor="#ffffff"><input name="userName" type="text"  value="孙鸿洋" maxlength="25" id="userName"  size=20> 
+         <td class="ta_01" bgColor="#ffffff">
+         <s:textfield name="userName" maxlength="25" size="20"></s:textfield>
           <font color="#FF0000">*</font></td>
     </tr>
 <tr>
@@ -109,90 +111,86 @@
 
 <td align="center" bgColor="#f5fafe" class="ta_01">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</td>
 <td class="ta_01" bgColor="#ffffff">
-<select name="sexId" style="width:155px">
-<option value=""></option>
-
-
-<option value="男" selected>男</option>
-<option value="女">女</option>
-
-
-
-</select></td>
+	<s:select
+		list="#request.sexList" name="sexId" id="sexId" listKey="ddlCode"
+		listValue="ddlname" headerKey="" headerValue=""
+		cssStyle="width:155px">
+	</s:select>
+</td>
 
 
 <td align="center" bgColor="#f5fafe" class="ta_01">所属单位：</td>
 <td class="ta_01" bgColor="#ffffff">
-<select name="jctId" style="width:155px">
-<option value=""></option>
-
-<option value="北京">北京</option>
-
-<option value="深圳" selected>深圳</option>
-
-<option value="厦门">厦门</option>
-
-<option value="上海">上海</option>
-
-<option value="广州">广州</option>
-
-</select> <font color="#FF0000">*</font></td>
+<s:select
+	list="#request.jctList" name="jctId" id="jctId"
+	listKey="ddlCode" listValue="ddlname"
+	headerKey="" headerValue="" cssStyle="width:155px">
+</s:select>
+<font color="#FF0000">*</font></td>
 
 </tr>
 <tr>
 <td align="center" bgColor="#f5fafe" class="ta_01">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
-<td class="ta_01" bgColor="#ffffff"><input name="logonPwd" type="password" value="sunhy" maxlength="25"  size=22>
+<td class="ta_01" bgColor="#ffffff">
+	<s:password name="logonPassword" id="logonPassword" maxlength="25" size="22" showPassword="true"></s:password>
 </td>
 <td align="center" bgColor="#f5fafe" class="ta_01">确认密码：</td>
-<td class="ta_01" bgColor="#ffffff"><input name="passwordconfirm" type="password" value="sunhy" maxlength="25" size=22>
+<td class="ta_01" bgColor="#ffffff">
+	<s:password name="passwordconfirm" id="passwordconfirm" maxlength="25" size="22"></s:password>
 </td>
 </tr>
 
 <tr>
 <td align="center" bgColor="#f5fafe" class="ta_01">出生日期：</td>
-<td class="ta_01" bgColor="#ffffff"><input name="birthday" type="text" maxlength="50"  size=20 value="" onclick="JavaScript:calendar(document.Form1.birthday)">
+<td class="ta_01" bgColor="#ffffff">
+	<s:textfield name="birthDay" id="birthday" maxlength="50" size="20" onclick="JavaScript:calendar(document.Form1.birthDay)" ></s:textfield>
 </td>
 <td align="center" bgColor="#f5fafe" class="ta_01">联系地址：</td>
-<td class="ta_01" bgColor="#ffffff"><input name="adress" type="text" maxlength="50"  size=20 value="">
+<td class="ta_01" bgColor="#ffffff">
+	<s:textfield name="address" id="address" maxlength="50" size="20"></s:textfield>
 </td>
 </tr>
 
 <tr>
 <td align="center" bgColor="#f5fafe" class="ta_01">联系电话：</td>
-<td class="ta_01" bgColor="#ffffff"><input name="contactTel" type="text" maxlength="25" size=20 value=""></td>
+<td class="ta_01" bgColor="#ffffff">
+	<s:textfield name="contactTel" id="contactTel" maxlength="25" size="20"></s:textfield>
+</td>
 <td align="center" bgColor="#f5fafe" class="ta_01">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：</td>
 <td class="ta_01" bgColor="#ffffff">
-<input name="mobile" type="text" maxlength="25"  size=20 value="">
+	<s:textfield name="mobile" id="mobile" maxlength="25" size="20"></s:textfield>
 </td>
 </tr>
 
 <tr>
 <td align="center" bgColor="#f5fafe" class="ta_01">电子邮箱：</td>
-<td class="ta_01" bgColor="#ffffff"><input name="email" type="text" maxlength="50"  size=20 value="">
+<td class="ta_01" bgColor="#ffffff">
+	<s:textfield name="email" id="email" maxlength="50" size="20"></s:textfield>
 </td>
 <td align="center" bgColor="#f5fafe" class="ta_01">是否在职：</td>
 <td class="ta_01" bgColor="#ffffff">
-<select name="isDuty"  style="width:155px">
-
-<option value="是" selected>是</option>
-<option value="否">否</option>
-
-
-</select></td>
+	<s:select list="#request.isDutyList" name="isDuty" id="isDuty" cssStyle="width:155px"
+			value="1"
+			listKey="ddlCode" listValue="ddlname"></s:select>
+</td>
 </tr>
 
 <tr>
 <td align="center" bgColor="#f5fafe" class="ta_01">入职日期：</td>
-<td class="ta_01" bgColor="#ffffff"><input name="ondutydate" type="text" maxlength="50" size=20 value="" onclick="JavaScript:calendar(document.Form1.ondutydate)">
+<td class="ta_01" bgColor="#ffffff">
+	<s:textfield name="onDutyDate" id="onDutyDate" maxlength="50" size="20" onclick="JavaScript:calendar(document.Form1.onDutyDate)"></s:textfield>
 </td>
 <td align="center" bgColor="#f5fafe" class="ta_01">离职日期：</td>
-<td class="ta_01" bgColor="#ffffff"><input name="offDutyDate" type="text" maxlength="50" size=20 value="" onclick="JavaScript:calendar(document.Form1.offDutyDate)">
+<td class="ta_01" bgColor="#ffffff">
+	<s:textfield name="offDutyDate" id="offDutyDate" maxlength="50" size="20" onclick="JavaScript:calendar(document.Form1.offDutyDate)"></s:textfield>
 </td>
 </tr>
 
 <TR>
 <TD class="ta_01" align="center" bgColor="#f5fafe">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</TD>
-<TD class="ta_01" bgColor="#ffffff" colSpan="3"><textarea name="empRemark"  style="WIDTH:92%;"  rows="4" cols="52">系统管理员</textarea></TD>
+<TD class="ta_01" bgColor="#ffffff" colSpan="3">
+	<s:textarea name="remark" cssStyle="WIDTH:95%" rows="4" cols="52" id="remark"></s:textarea>
+</TD>
 </TR>
 <TR>
 <td  align="center"  colSpan="4"  class="sep1"></td>

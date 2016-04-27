@@ -1,6 +1,5 @@
 package com.yzx.elec.service;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -26,17 +25,12 @@ public interface ICommonService<T, V> {
 	/**
 	 * 根据id查找一个实体
 	 */
-	public V findObjectById(Serializable id);
-
-	/**
-	 * 根据id数组查找实体数组
-	 */
-	public void delectObjectByIds(Serializable... ids);
+	public V findObjectByVo(V vo);
 
 	/**
 	 * 删除实体集合
 	 */
-	public void deleteObjects(Collection<T> entities);
+	public void deleteObjects(Collection<V> entities);
 
 	/**
 	 * 根据值对象的条件查找满足条件的实体，并将结果转化为值对象集合返回

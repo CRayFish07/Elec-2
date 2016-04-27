@@ -1,6 +1,5 @@
 package com.yzx.elec.service.impl;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -180,8 +179,7 @@ public class ElecSystemDDLServiceImpl extends CommonServiceImpl<ElecSystemDDL, E
 	}
 
 	@Override
-	public ElecSystemDDLForm findObjectById(Serializable id) {
-		// TODO 自动生成的方法存根
+	public ElecSystemDDLForm findObjectByVo(ElecSystemDDLForm form) {
 		return null;
 	}
 }

@@ -2,7 +2,6 @@ package com.yzx.elec.web.action;
 
 import java.util.List;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yzx.elec.container.ServiceProvider;
 import com.yzx.elec.service.IElecSystemDDlService;
@@ -44,10 +43,15 @@ public class ElecUserAction extends BaseAction implements ModelDriven<ElecUserFo
 	}
 	
 	public String edit() {
-		ElecUserForm userData = service.findObjectById(form.getUserId());
-		ActionContext.getContext().getValueStack().push(userData);
+		service.findObjectByVo(form);
+//		ActionContext.getContext().getValueStack().push(userData);
 		initSystemDDL();
 		return "edit";
+	}
+	
+	public String delete() {
+		service.deleteUsers(form);
+		return "delete";
 	}
 
 

@@ -146,7 +146,7 @@
 				</td>
 				<td align="center" bgColor="#f5fafe" class="ta_01">联系地址：</td>
 				<td class="ta_01" bgColor="#ffffff">
-					<s:textfield name="adress" id="adress" maxlength="50" size="20"></s:textfield>
+					<s:textfield name="address" id="address" maxlength="50" size="20"></s:textfield>
 				</td>
 			</tr>
 

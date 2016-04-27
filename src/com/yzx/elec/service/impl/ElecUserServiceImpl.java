@@ -73,11 +73,17 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 	@Transactional(isolation=Isolation.DEFAULT,readOnly=false,propagation=Propagation.REQUIRED)
 	@Override
 	public void save(ElecUserForm form) {
-		dao.save(vo2Po(form));
+		ElecUser user = vo2Po(form);
+		if(user.getUserId() > 0) {
+			dao.update(user);
+		} else {
+			dao.save(user);
+		}
 	}
 	
 	private ElecUser vo2Po(ElecUserForm form) {
 		ElecUser user = new ElecUser();
+		user.setUserId(form.getUserId());
 		user.setJctId(form.getJctId());
 		user.setUserName(form.getUserName());
 		user.setLogonName(form.getLogonName());
@@ -95,11 +101,11 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 		return user;
 	}
 	
-	private ElecUserForm po2Vo(ElecUser user) {
+	private ElecUserForm po2Vo(ElecUser user, ElecUserForm form) {
 		if(user == null) {
 			return null;
 		}
-		ElecUserForm form = new ElecUserForm();
+//		ElecUserForm form = new ElecUserForm();
 		form.setUserId(user.getUserId());
 		form.setJctId(user.getJctId());
 		form.setUserName(user.getUserName());
@@ -119,8 +125,18 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 	}
 
 	@Override
-	public ElecUserForm findObjectById(Serializable id) {
-		ElecUser user = dao.findObjectById(id);
-		return po2Vo(user);
+	public ElecUserForm findObjectByVo(ElecUserForm form) {
+		ElecUser user = dao.findObjectById(form.getUserId());
+		return po2Vo(user, form);
+	}
+
+	@Transactional(isolation=Isolation.DEFAULT,readOnly=false,propagation=Propagation.REQUIRED)
+	@Override
+	public void deleteUsers(ElecUserForm... users) {
+		Serializable[] ids = new Serializable[users.length];
+		for(int i=0; i<users.length; i++) {
+			ids[i] = users[i].getUserId();
+		}
+		dao.deleteObjectByIds(ids);
 	}
 }

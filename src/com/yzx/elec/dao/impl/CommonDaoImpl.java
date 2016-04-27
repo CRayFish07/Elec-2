@@ -22,7 +22,6 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import com.yan.util.ColUtil;
 import com.yan.util.GenericSuperClassUtil;
 import com.yzx.elec.dao.ICommonDao;
-import com.yzx.elec.pojo.ElecSystemDDL;
 
 public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<T> {
 	/**
@@ -128,8 +127,8 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 	}
 
 	@Override
-	public void deleteObject(ElecSystemDDL ddl) {
-		ht.delete(ddl);
+	public void deleteObject(T t) {
+		ht.delete(t);
 	}
 	
 }

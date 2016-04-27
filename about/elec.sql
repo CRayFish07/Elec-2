@@ -51,9 +51,9 @@ CREATE TABLE `elec_text` (
 -- ----------------------------
 -- Table structure for elec_user
 -- ----------------------------
-DROP TABLE IF EXISTS `elec_user`;
+DROP TABLE IF EXISTS elec_user;
 CREATE TABLE `elec_user` (
-  `UserId` int NOT NULL COMMENT '�û�id',
+  `UserId` int NOT NULL auto_increment,
   `JctId` varchar(50) NOT NULL COMMENT '������λcode',
   `UserName` varchar(50) NOT NULL COMMENT '�û�����',
   `LogonName` varchar(50) NOT NULL COMMENT '��¼��',

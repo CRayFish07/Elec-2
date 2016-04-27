@@ -11,6 +11,15 @@
   	document.Form1.action="system/userAction_main.do";
   	document.Form1.submit();
   }
+  
+  function query() {
+	  var queryName = document.getElementById("userName").value;
+	  
+	  var table = document.getElementById("usersTable");
+	  for(var i=0; i<table.rows.length; i++) {
+		  var row = table.rows[i];
+	  }
+  }
   </script>
 
 <HTML>
@@ -69,7 +78,7 @@
 				<td class="ta_01" align="center" bgColor="#f5fafe" colspan=3>			
 					
 									
-						<table cellspacing="0" cellpadding="1" rules="all" bordercolor="gray" border="1" id="DataGrid1"
+						<table id="usersTable" cellspacing="0" cellpadding="1" rules="all" bordercolor="gray" border="1" id="DataGrid1"
 							style="BORDER-RIGHT:gray 1px solid; BORDER-TOP:gray 1px solid; BORDER-LEFT:gray 1px solid; WIDTH:100%; WORD-BREAK:break-all; BORDER-BOTTOM:gray 1px solid; BORDER-COLLAPSE:collapse; BACKGROUND-COLOR:#f5fafe; WORD-WRAP:break-word">
 							<tr style="FONT-WEIGHT:bold;FONT-SIZE:12pt;HEIGHT:25px;BACKGROUND-COLOR:#afd1f3">
 							
@@ -103,12 +112,12 @@
 										</td>
 										
 										<td align="center" style="HEIGHT: 22px" align="center" width="10%">																	
-										   <a href="#" onclick="openWindow('system/elecUserAction_edit.do?userid=<s:property value="%{#user.userId}"/>','700','400');">
+										   <a href="#" onclick="openWindow('system/elecUserAction_edit.do?userId=<s:property value="%{#user.userId}"/>','700','400');">
 										   <img src="${pageContext.request.contextPath }/images/edit.gif" border="0" style="CURSOR:hand"></a>													
 										</td>
 										
 										<td align="center" style="HEIGHT: 22px" align="center" width="10%">
-											<a href="removeuser.do?userId=<s:property value='%{#user.userId}'/>" onclick="return confirm('你确定要删除  <s:property value="%{#user.userName}"/>？')">
+											<a href="system/elecUserAction_delete.do?userId=<s:property value='%{#user.userId}'/>" onclick="return confirm('你确定要删除  <s:property value="%{#user.userName}"/>？')">
 											<img src="${pageContext.request.contextPath }/images/delete.gif" width="16" height="16" border="0" style="CURSOR:hand"></a>												
 										</td>
 									</tr>
