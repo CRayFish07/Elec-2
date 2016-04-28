@@ -4,9 +4,9 @@
 <!-- Generated 2016-4-19 15:13:59 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.yzx.elec.pojo.ElecUser" table="elec_user">
-        <id name="userId" type="string">
-            <column name="UserId" length="50" />
-            <generator class="assigned" />
+        <id name="userId" type="int">
+            <column name="UserId"/>
+            <generator class="increment" />
         </id>
         <property name="jctId" type="string">
             <column name="JctId" length="50" not-null="true" />

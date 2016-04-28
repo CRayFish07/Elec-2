@@ -33,12 +33,35 @@ public class ElecUserAction extends BaseAction implements ModelDriven<ElecUserFo
 	
 	public String add() {
 		//查询数据字典，查询性别，所属单位，以及是否在职，在数据字典中的编号以及名称
+		initSystemDDL();
+		return "add";
+	}
+	
+	public String save() {
+		service.save(form);
+		return "save";
+	}
+	
+	public String edit() {
+		service.findObjectByVo(form);
+//		ActionContext.getContext().getValueStack().push(userData);
+		initSystemDDL();
+		request.setAttribute("viewflag", form.getViewflag());
+		return "edit";
+	}
+	
+	public String delete() {
+		service.deleteUsers(form);
+		return "delete";
+	}
+
+
+	private void initSystemDDL() {
 		List<ElecSystemDDLForm> sexDdl = ddlService.findDdlListByKeyword(SEX);
 		List<ElecSystemDDLForm> jctDdl = ddlService.findDdlListByKeyword(JCT);
 		List<ElecSystemDDLForm> isDutyDdl = ddlService.findDdlListByKeyword(IS_DUTY);
 		request.setAttribute("sexList", sexDdl);
 		request.setAttribute("jctList", jctDdl);
 		request.setAttribute("isDutyList", isDutyDdl);
-		return "add";
 	}
 }

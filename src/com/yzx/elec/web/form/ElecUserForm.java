@@ -3,7 +3,7 @@ package com.yzx.elec.web.form;
 import java.util.Date;
 
 public class ElecUserForm {
-	private String userId;
+	private int userId;
 	private String jctId;
 	private String userName;
 	private String logonName;
@@ -18,10 +18,16 @@ public class ElecUserForm {
 	private Date onDutyDate;
 	private Date offDutyDate;
 	private String remark;
-	public String getUserId() {
+	
+	/**
+	 * =1时，只是查看明细，并不修改保存
+	 * =null时，修改保存
+	 */
+	private String viewflag;
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getJctId() {
@@ -107,5 +113,11 @@ public class ElecUserForm {
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	public String getViewflag() {
+		return viewflag;
+	}
+	public void setViewflag(String viewflag) {
+		this.viewflag = viewflag;
 	}
 }

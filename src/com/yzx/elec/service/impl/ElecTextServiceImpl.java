@@ -69,4 +69,26 @@ public class ElecTextServiceImpl extends CommonServiceImpl<ElecText, ElecTextFor
 		return result;
 	}
 
+	@Override
+	public void save(ElecTextForm form) {
+		if(form == null) {
+			return;
+		}
+		dao.save(vo2po(form));
+	}
+	
+	private ElecText vo2po(ElecTextForm form1) {
+		ElecText et = new ElecText();
+		et.setTextname(form1.getTextname());
+		et.setTextdate(form1.getTextdate());
+		et.setTextremark(form1.getTextremark());
+		
+		return et;
+	}
+
+	@Override
+	public ElecTextForm findObjectByVo(ElecTextForm form) {
+		return null;
+	}
+
 }

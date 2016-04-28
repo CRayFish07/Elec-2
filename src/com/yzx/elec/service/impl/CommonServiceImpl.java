@@ -1,6 +1,5 @@
 package com.yzx.elec.service.impl;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,8 +16,8 @@ public abstract class CommonServiceImpl<T, V> implements ICommonService<T, V> {
 	
 	@Transactional(readOnly=false,isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED)
 	@Override
-	public void save(T object) {
-		dao.save(object);
+	public void save(V object) {
+		
 	}
 
 	@Transactional(readOnly=false,isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED)
@@ -28,20 +27,13 @@ public abstract class CommonServiceImpl<T, V> implements ICommonService<T, V> {
 	}
 
 	@Override
-	public T findObjectById(Serializable id) {
-		return dao.findObjectById(id);
+	public V findObjectByVo(V vo) {
+		return null;
 	}
 
 	@Transactional(readOnly=false,isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED)
 	@Override
-	public void delectObjectByIds(Serializable... ids) {
-		dao.deleteObjectByIds(ids);
-	}
-
-	@Transactional(readOnly=false,isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED)
-	@Override
-	public void deleteObjects(Collection<T> entities) {
-		dao.deleteObjects(entities);
+	public void deleteObjects(Collection<V> entities) {
 	}
 
 	@Override

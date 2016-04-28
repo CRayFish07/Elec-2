@@ -25,10 +25,10 @@ CREATE TABLE `elec_commonmsg` (
 -- ----------------------------
 DROP TABLE IF EXISTS `elec_systemddl`;
 CREATE TABLE `elec_systemddl` (
-  `seqId` int(11) NOT NULL,
-  `keyword` varchar(20) NOT NULL,
-  `ddlCode` int(11) NOT NULL,
-  `ddlname` varchar(30) NOT NULL,
+  `seqId` int(11) NOT NULL COMMENT '����id',
+  `keyword` varchar(20) NOT NULL COMMENT '���͹ؼ���',
+  `ddlCode` int(11) NOT NULL COMMENT '����code',
+  `ddlname` varchar(30) NOT NULL COMMENT '������',
   PRIMARY KEY (`seqId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -51,23 +51,23 @@ CREATE TABLE `elec_text` (
 -- ----------------------------
 -- Table structure for elec_user
 -- ----------------------------
-DROP TABLE IF EXISTS `elec_user`;
+DROP TABLE IF EXISTS elec_user;
 CREATE TABLE `elec_user` (
-  `UserId` varchar(50) NOT NULL,
-  `JctId` varchar(50) NOT NULL,
-  `UserName` varchar(50) NOT NULL,
-  `LogonName` varchar(50) NOT NULL,
-  `LogonPassword` varchar(50) NOT NULL,
-  `SexId` varchar(10) NOT NULL,
-  `BirthDay` datetime DEFAULT NULL,
-  `Address` varchar(100) DEFAULT NULL,
-  `ContactTel` varchar(50) DEFAULT NULL,
-  `Email` varchar(50) DEFAULT NULL,
-  `Mobile` varchar(50) DEFAULT NULL,
-  `IsDuty` varchar(10) DEFAULT NULL,
-  `OnDutyDate` datetime DEFAULT NULL,
-  `OffDutyDate` datetime DEFAULT NULL,
-  `remark` varchar(500) DEFAULT NULL,
+  `UserId` int NOT NULL auto_increment,
+  `JctId` varchar(50) NOT NULL COMMENT '������λcode',
+  `UserName` varchar(50) NOT NULL COMMENT '�û�����',
+  `LogonName` varchar(50) NOT NULL COMMENT '��¼��',
+  `LogonPassword` varchar(50) NOT NULL COMMENT '��¼����',
+  `SexId` varchar(10) NOT NULL COMMENT '�Ա�',
+  `BirthDay` datetime DEFAULT NULL COMMENT '����',
+  `Address` varchar(100) DEFAULT NULL COMMENT '��ַ',
+  `ContactTel` varchar(50) DEFAULT NULL COMMENT '��ϵ�绰',
+  `Email` varchar(50) DEFAULT NULL COMMENT '����',
+  `Mobile` varchar(50) DEFAULT NULL COMMENT '�ֻ���',
+  `IsDuty` varchar(10) DEFAULT NULL COMMENT '�Ƿ���ְ',
+  `OnDutyDate` datetime DEFAULT NULL COMMENT '��ְʱ��',
+  `OffDutyDate` datetime DEFAULT NULL COMMENT '��ְʱ��',
+  `remark` varchar(500) DEFAULT NULL COMMENT '��ע',
   PRIMARY KEY (`UserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

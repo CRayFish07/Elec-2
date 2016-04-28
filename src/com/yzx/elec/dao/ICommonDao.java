@@ -6,8 +6,6 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import com.yzx.elec.pojo.ElecSystemDDL;
-
 /**
  * 通用dao接口
  * @author yzx
@@ -41,6 +39,6 @@ public interface ICommonDao<T> {
 	 * @return 查询到的对象列表
 	 */
 	public List<T> findObjectsByConditions(String conditionHql, ArrayList<String> params, LinkedHashMap<String, String> orderBy);
-	public void deleteObject(ElecSystemDDL ddl);
+	public void deleteObject(T t);
 	
 }

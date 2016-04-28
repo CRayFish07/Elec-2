@@ -177,4 +177,9 @@ public class ElecSystemDDLServiceImpl extends CommonServiceImpl<ElecSystemDDL, E
 		
 		return changePo2VoList(ddlList);
 	}
+
+	@Override
+	public ElecSystemDDLForm findObjectByVo(ElecSystemDDLForm form) {
+		return null;
+	}
 }
