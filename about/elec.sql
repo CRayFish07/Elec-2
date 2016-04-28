@@ -25,10 +25,10 @@ CREATE TABLE `elec_commonmsg` (
 -- ----------------------------
 DROP TABLE IF EXISTS `elec_systemddl`;
 CREATE TABLE `elec_systemddl` (
-  `seqId` int(11) NOT NULL COMMENT '序列id',
-  `keyword` varchar(20) NOT NULL COMMENT '类型关键字',
-  `ddlCode` int(11) NOT NULL COMMENT '操作code',
-  `ddlname` varchar(30) NOT NULL COMMENT '操作名',
+  `seqId` int(11) NOT NULL,
+  `keyword` varchar(20) NOT NULL,
+  `ddlCode` int(11) NOT NULL,
+  `ddlname` varchar(30) NOT NULL,
   PRIMARY KEY (`seqId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -53,21 +53,21 @@ CREATE TABLE `elec_text` (
 -- ----------------------------
 DROP TABLE IF EXISTS `elec_user`;
 CREATE TABLE `elec_user` (
-  `UserId` varchar(50) NOT NULL COMMENT '用户id',
-  `JctId` varchar(50) NOT NULL COMMENT '所属单位code',
-  `UserName` varchar(50) NOT NULL COMMENT '用户姓名',
-  `LogonName` varchar(50) NOT NULL COMMENT '登录名',
-  `LogonPassword` varchar(50) NOT NULL COMMENT '登录密码',
-  `SexId` varchar(10) NOT NULL COMMENT '性别',
-  `BirthDay` datetime DEFAULT NULL COMMENT '生日',
-  `Address` varchar(100) DEFAULT NULL COMMENT '地址',
-  `ContactTel` varchar(50) DEFAULT NULL COMMENT '联系电话',
-  `Email` varchar(50) DEFAULT NULL COMMENT '邮箱',
-  `Mobile` varchar(50) DEFAULT NULL COMMENT '手机号',
-  `IsDuty` varchar(10) DEFAULT NULL COMMENT '是否在职',
-  `OnDutyDate` datetime DEFAULT NULL COMMENT '入职时间',
-  `OffDutyDate` datetime DEFAULT NULL COMMENT '离职时间',
-  `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+  `UserId` varchar(50) NOT NULL,
+  `JctId` varchar(50) NOT NULL,
+  `UserName` varchar(50) NOT NULL,
+  `LogonName` varchar(50) NOT NULL,
+  `LogonPassword` varchar(50) NOT NULL,
+  `SexId` varchar(10) NOT NULL,
+  `BirthDay` datetime DEFAULT NULL,
+  `Address` varchar(100) DEFAULT NULL,
+  `ContactTel` varchar(50) DEFAULT NULL,
+  `Email` varchar(50) DEFAULT NULL,
+  `Mobile` varchar(50) DEFAULT NULL,
+  `IsDuty` varchar(10) DEFAULT NULL,
+  `OnDutyDate` datetime DEFAULT NULL,
+  `OffDutyDate` datetime DEFAULT NULL,
+  `remark` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`UserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
