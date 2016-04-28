@@ -92,7 +92,14 @@
 
 	 <tr>
 		<td class="ta_01" align="center" colSpan="4" background="${pageContext.request.contextPath }/images/b-info.gif">
-		 <font face="宋体" size="2"><strong>编辑用户</strong></font>
+		 <font face="宋体" size="2"><strong>
+		 <s:if test="#request.viewflag">
+		 编辑用户
+		 </s:if>
+		 <s:else>
+		 查看明细
+		 </s:else>
+		 </strong></font>
 		</td>
     </tr>
     	<s:hidden name="userId" id="userId"></s:hidden>
@@ -197,7 +204,9 @@
 </TR>
 <tr>
 	<td class="ta_01" style="WIDTH: 100%" align="center" bgColor="#f5fafe" colSpan="4">
-	<input type="button" name="BT_Submit" value="保存"  style="font-size:12px; color:black; height=22;width=55"  onClick="check_null()">
+	<s:if test="#request.viewflag==null">
+		<input type="button" name="BT_Submit" value="保存"  style="font-size:12px; color:black; height=22;width=55"  onClick="check_null()">
+	</s:if>
 	 <FONT face="宋体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
 	  
 	   <input style="font-size:12px; color:black; height=22;width=55" type="button" value="关闭"  name="Reset1"  onClick="window.close()">

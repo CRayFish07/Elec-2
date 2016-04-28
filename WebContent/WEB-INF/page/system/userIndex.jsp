@@ -43,7 +43,7 @@
 					<td class="ta_01" align="center" bgcolor="#f5fafe" height="22">
 					姓名：</td>
 					<td class="ta_01" >
-					<s:textfield name="userName" id="userName" size="21"></s:textfield>
+						<s:textfield name="userName" id="userName" size="21"></s:textfield>
 					<!-- <input name="userName" type="text" id="userName"  size="21"><font face="宋体" color="red"> -->
 					</font></td>
 				</tr>
@@ -94,12 +94,13 @@
 							<s:if test="#request.userList!=null && #request.userList.size()>0">
 								<s:iterator var="user" value="%{#request.userList}">
 									<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-										
 										<td style="HEIGHT:22px" align="center" width="20%">
 											<s:property value="%{#user.logonName}"/>
 										</td>
 										<td style="HEIGHT:22px" align="center" width="20%">
+										<a href="#" onclick="openWindow('system/elecUserAction_edit.do?userId=<s:property value="%{#user.userId}"/>&viewflag=1','700','400');">
 											<s:property value="%{#user.userName}"/>
+										</a>
 										</td>
 										<td style="HEIGHT:22px" align="center" width="10%">
 											<s:property value="%{#user.sexId}"/>

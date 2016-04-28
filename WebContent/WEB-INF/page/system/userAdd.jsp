@@ -77,6 +77,55 @@
 		 refreshOpener();
 	}
 	
+	//使用ajax进行校验
+	//创建ajax引擎
+	function createXmlHttpRequest() {
+		var xmlHttp;
+		try {
+			//firefox
+			xmlHttp = new XMLHttpRequest();
+		} catch (e) {
+			try {
+				//ie
+				xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch (e) {
+				try {
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+				} catch (e) {
+				}
+			}
+		}
+		return xmlHttp;
+	}
+	
+	function checkLogonName() {
+		var logonName = document.getElementById("logonName").value;
+		if(logonName == null || logonName == "") {
+			return;
+		}
+		
+		//创建ajax引擎
+		var xmlHttp = createXmlHttpRequest();
+		//事件处理函数，实质相当于一个监听
+		xmlHttp.onreadystatechange = function() {
+			if(xmlHttp.readyState == 4) {
+				if(xmlHttp.status == 200) {
+					var data = xmlHttp.responseText;
+					//alert(data);
+					if(data == "1") {
+						alert("["+logonName+"]已被注册，请重新输入");
+						document.getElementById("logonName").value = "";
+						document.getElementById("logonName").focus();
+					}
+				}
+			}
+		}
+		//与后台服务器创建连接
+		xmlHttp.open("post", "../../checkLogonName", true);
+		xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		//发送请求参数
+		xmlHttp.send("logonName="+logonName);
+	}
    </script>
   </head>
   
@@ -97,7 +146,7 @@
 				<td align="center" bgColor="#f5fafe" class="ta_01">登&nbsp;&nbsp;录&nbsp;&nbsp;名：<font
 					color="#FF0000">*</font></td>
 				<td class="ta_01" bgColor="#ffffff">
-					<s:textfield name="logonName" id="logonName" maxlength="25" size="20" ></s:textfield>	
+					<s:textfield name="logonName" id="logonName" maxlength="25" size="20" onblur="checkLogonName()"></s:textfield>	
 				</td>
 				<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">用户姓名：<font
 					color="#FF0000">*</font></td>

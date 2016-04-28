@@ -18,6 +18,12 @@ public class ElecUserForm {
 	private Date onDutyDate;
 	private Date offDutyDate;
 	private String remark;
+	
+	/**
+	 * =1时，只是查看明细，并不修改保存
+	 * =null时，修改保存
+	 */
+	private String viewflag;
 	public int getUserId() {
 		return userId;
 	}
@@ -107,5 +113,11 @@ public class ElecUserForm {
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	public String getViewflag() {
+		return viewflag;
+	}
+	public void setViewflag(String viewflag) {
+		this.viewflag = viewflag;
 	}
 }

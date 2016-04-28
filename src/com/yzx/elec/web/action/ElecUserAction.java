@@ -46,6 +46,7 @@ public class ElecUserAction extends BaseAction implements ModelDriven<ElecUserFo
 		service.findObjectByVo(form);
 //		ActionContext.getContext().getValueStack().push(userData);
 		initSystemDDL();
+		request.setAttribute("viewflag", form.getViewflag());
 		return "edit";
 	}
 	

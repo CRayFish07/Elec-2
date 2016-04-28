@@ -7,4 +7,6 @@ public interface IElecUserService extends ICommonService<ElecUser, ElecUserForm>
 	public static final String SERVICE_NAME = "com.yzx.elec.service.impl.ElecUserServiceImpl";
 	
 	public void deleteUsers(ElecUserForm... users);
+
+	public String checkUserExists(String logonName);
 }

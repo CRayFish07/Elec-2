@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.yan.util.ColUtil;
 import com.yan.util.StringUtil;
 import com.yzx.elec.dao.ICommonDao;
 import com.yzx.elec.dao.IElecSystemDDLDao;
@@ -138,5 +139,18 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 			ids[i] = users[i].getUserId();
 		}
 		dao.deleteObjectByIds(ids);
+	}
+
+	@Override
+	public String checkUserExists(String logonName) {
+		String condition = " and logonName=?";
+		ArrayList<String> params = new ArrayList<String>();
+		params.add(logonName);
+		List<ElecUser> users = dao.findObjectsByConditions(condition, params, null);
+		if(!ColUtil.isEmpty(users)) {
+			return "1";
+		} else {
+			return "2";
+		}
 	}
 }
