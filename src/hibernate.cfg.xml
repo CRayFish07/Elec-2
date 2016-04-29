@@ -7,16 +7,18 @@
         <!-- <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">y13271814371</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost/elec</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="hibernate.connection.username">root</property> -->
         <property name="hibernate.connection.autocommit">true</property>
-        <property name="hibernate.hbm2ddl.auto">update</property> -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
         
         <mapping resource="com/yzx/elec/pojo/ElecText.hbm.xml"/>
         <mapping resource="com/yzx/elec/pojo/ElecCommonMsg.hbm.xml"/>
         <mapping resource="com/yzx/elec/pojo/ElecSystemddl.hbm.xml"/>
         <mapping resource="com/yzx/elec/pojo/ElecUser.hbm.xml"/>
+        <mapping resource="com/yzx/elec/pojo/ElecUserRole.hbm.xml"/>
+        <mapping resource="com/yzx/elec/pojo/ElecRolePopedom.hbm.xml"/>
     </session-factory>
     
 </hibernate-configuration>

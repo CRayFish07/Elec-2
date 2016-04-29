@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-29 17:14:37 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.yzx.elec.pojo.ElecUserRole" table="elec_user_role">
+        <id name="seqId" type="java.lang.Integer">
+            <column name="seqId" />
+            <generator class="increment" />
+        </id>
+        <property name="userId" type="int">
+            <column name="userId" not-null="true" />
+        </property>
+        <property name="roleId" type="int">
+            <column name="roleId" not-null="true" />
+        </property>
+        <property name="remark" type="string">
+            <column name="remark" length="500" />
+        </property>
+    </class>
+</hibernate-mapping>

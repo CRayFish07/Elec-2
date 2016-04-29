@@ -3,7 +3,6 @@ package com.yzx.elec.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
