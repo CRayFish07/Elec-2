@@ -1,6 +1,6 @@
 package com.yzx.elec.pojo;
 
-// Generated 2016-4-19 15:13:58 by Hibernate Tools 3.4.0.CR1
+// Generated 2016-4-29 17:13:40 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class ElecUser implements java.io.Serializable {
 
-	private int userId;
+	private Integer userId;
 	private String jctId;
 	private String userName;
 	private String logonName;
@@ -29,9 +29,8 @@ public class ElecUser implements java.io.Serializable {
 	public ElecUser() {
 	}
 
-	public ElecUser(int userId, String jctId, String userName,
-			String logonName, String logonPassword, String sexId) {
-		this.userId = userId;
+	public ElecUser(String jctId, String userName, String logonName,
+			String logonPassword, String sexId) {
 		this.jctId = jctId;
 		this.userName = userName;
 		this.logonName = logonName;
@@ -39,12 +38,10 @@ public class ElecUser implements java.io.Serializable {
 		this.sexId = sexId;
 	}
 
-	public ElecUser(int userId, String jctId, String userName,
-			String logonName, String logonPassword, String sexId,
-			Date birthDay, String address, String contactTel, String email,
-			String mobile, String isDuty, Date onDutyDate, Date offDutyDate,
-			String remark) {
-		this.userId = userId;
+	public ElecUser(String jctId, String userName, String logonName,
+			String logonPassword, String sexId, Date birthDay, String address,
+			String contactTel, String email, String mobile, String isDuty,
+			Date onDutyDate, Date offDutyDate, String remark) {
 		this.jctId = jctId;
 		this.userName = userName;
 		this.logonName = logonName;
@@ -61,11 +58,11 @@ public class ElecUser implements java.io.Serializable {
 		this.remark = remark;
 	}
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return this.userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 

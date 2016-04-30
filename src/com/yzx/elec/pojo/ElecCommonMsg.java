@@ -1,6 +1,6 @@
 package com.yzx.elec.pojo;
 
-// Generated 2016-4-19 15:13:58 by Hibernate Tools 3.4.0.CR1
+// Generated 2016-4-29 17:13:40 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 

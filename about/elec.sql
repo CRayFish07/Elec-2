@@ -71,6 +71,22 @@ CREATE TABLE `elec_user` (
   PRIMARY KEY (`UserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+drop table if exists Elec_User_Role;
+create table Elec_User_Role (
+	seqId int not null primary key auto_increment,
+	userId int not null,
+	roleId int not null,
+	remark varchar(500) null
+);
+
+drop table if exists Elec_Role_Popedom;
+create table Elec_Role_Popedom (
+	roleId int not null primary key auto_increment,
+	popedomCode varchar(50) null,
+	remark varchar(500)
+);
+	
+	
 -- ----------------------------
 -- Records 
 -- ----------------------------

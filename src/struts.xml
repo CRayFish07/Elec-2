@@ -40,6 +40,9 @@
             	<param name="nameSpace">/system</param>
             </result>
         </action>
+        <action name="elecRoleAction_*" class="com.yzx.elec.web.action.ElecRoleAction" method="{1}">
+        	<result name="home">/WEB-INF/page/system/roleIndex.jsp</result>
+        </action>
     </package>
 	<package name="menu" extends="struts-default" namespace="/menu">
 		<action name="elecMenuAction_*" class="com.yzx.elec.web.action.ElecMenuAction" method="{1}">

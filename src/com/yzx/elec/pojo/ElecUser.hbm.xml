@@ -1,54 +1,82 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-4-19 15:13:59 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 2016-4-29 17:13:41 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.yzx.elec.pojo.ElecUser" table="elec_user">
-        <id name="userId" type="int">
-            <column name="UserId"/>
-            <generator class="increment" />
+        <id name="userId" type="java.lang.Integer">
+            <column name="UserId" />
+            <generator class="identity" />
         </id>
         <property name="jctId" type="string">
-            <column name="JctId" length="50" not-null="true" />
+            <column name="JctId" length="50" not-null="true">
+                <comment>??????</comment>
+            </column>
         </property>
         <property name="userName" type="string">
-            <column name="UserName" length="50" not-null="true" />
+            <column name="UserName" length="50" not-null="true">
+                <comment>???????</comment>
+            </column>
         </property>
         <property name="logonName" type="string">
-            <column name="LogonName" length="50" not-null="true" />
+            <column name="LogonName" length="50" not-null="true">
+                <comment>?????</comment>
+            </column>
         </property>
         <property name="logonPassword" type="string">
-            <column name="LogonPassword" length="50" not-null="true" />
+            <column name="LogonPassword" length="50" not-null="true">
+                <comment>???????</comment>
+            </column>
         </property>
         <property name="sexId" type="string">
-            <column name="SexId" length="10" not-null="true" />
+            <column name="SexId" length="10" not-null="true">
+                <comment>???</comment>
+            </column>
         </property>
         <property name="birthDay" type="timestamp">
-            <column name="BirthDay" length="19" />
+            <column name="BirthDay" length="19">
+                <comment>????</comment>
+            </column>
         </property>
         <property name="address" type="string">
-            <column name="Address" length="100" />
+            <column name="Address" length="100">
+                <comment>???</comment>
+            </column>
         </property>
         <property name="contactTel" type="string">
-            <column name="ContactTel" length="50" />
+            <column name="ContactTel" length="50">
+                <comment>????</comment>
+            </column>
         </property>
         <property name="email" type="string">
-            <column name="Email" length="50" />
+            <column name="Email" length="50">
+                <comment>????</comment>
+            </column>
         </property>
         <property name="mobile" type="string">
-            <column name="Mobile" length="50" />
+            <column name="Mobile" length="50">
+                <comment>?????</comment>
+            </column>
         </property>
         <property name="isDuty" type="string">
-            <column name="IsDuty" length="10" />
+            <column name="IsDuty" length="10">
+                <comment>??????</comment>
+            </column>
         </property>
         <property name="onDutyDate" type="timestamp">
-            <column name="OnDutyDate" length="19" />
+            <column name="OnDutyDate" length="19">
+                <comment>??????</comment>
+            </column>
         </property>
         <property name="offDutyDate" type="timestamp">
-            <column name="OffDutyDate" length="19" />
+            <column name="OffDutyDate" length="19">
+                <comment>??????</comment>
+            </column>
         </property>
         <property name="remark" type="string">
-            <column name="remark" length="500" />
+            <column name="remark" length="500">
+                <comment>???</comment>
+            </column>
         </property>
     </class>
 </hibernate-mapping>
