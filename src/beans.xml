@@ -11,7 +11,7 @@
 		                    http://www.springframework.org/schema/tx 
 		                    http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
 		                    http://www.springframework.org/schema/aop 
-		                    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"> 
+		                    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 <!-- 1:配置注解的自动扫描的范围 -->
 <context:component-scan base-package="com.yzx.elec"></context:component-scan>
 <!-- 2:配置数据源 -->
@@ -19,7 +19,7 @@
 	<property name="driverClass" value="com.mysql.jdbc.Driver" />
 	<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/elec?useUnicode=true&amp;characterEncoding=UTF-8"/>
 	<property name="user" value="root" />
-	<property name="password" value="y13271814371" />
+	<property name="password" value="123456" />
 	<!--连接池中保留的最小连接数。-->
 	<property name="minPoolSize" value="5" />
 
