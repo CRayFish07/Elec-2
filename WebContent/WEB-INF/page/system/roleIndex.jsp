@@ -1,7 +1,5 @@
-
-
-
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <HTML>
 	<HEAD>
@@ -51,27 +49,13 @@
 					<td class="ta_01" align="right" width="35%" >角色类型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td class="ta_01" align="left"  width="65%" >
 					
-					
-					  <select name="role" class="bg" style="width:180px"  onchange="selectRole()">
-						 <option value="0">请选择</option>
-						 
-						 <option value="1">系统管理员</option>
-						 
-						 <option value="2">高级管理员</option>
-						 
-						 <option value="3">中级管理员</option>
-						 
-						 <option value="4">业务用户</option>
-						 
-						 <option value="5">一般用户</option>
-						 
-						 <option value="6">普通用户</option>
-						 
-					  </select>  
-					 
-					 
-					   
-					  
+					<s:if test="#request.systemList!=null && #request.systemList.size()!=0">
+						<s:select list="#request.systemList" id="role" name="role" cssClass="bg" cssStyle="width:180px" onchange="selectRole()"
+									listKey="ddlCode" listValue="ddlname" headerKey="0" headerValue="请选择"
+									
+						
+						></s:select>
+					</s:if>
 					</td>				
 				</tr>
 			    

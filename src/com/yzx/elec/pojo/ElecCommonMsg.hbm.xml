@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-4-29 17:13:41 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.yzx.elec.pojo.ElecCommonmsg" table="elec_commonmsg">
+    <class name="com.yzx.elec.pojo.ElecCommonMsg" table="elec_commonmsg">
         <id name="comId" type="string">
             <column name="ComId" length="50" />
             <generator class="assigned" />

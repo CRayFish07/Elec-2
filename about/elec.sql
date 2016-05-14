@@ -92,6 +92,7 @@ create table Elec_Role_Popedom (
 -- ----------------------------
 INSERT INTO `elec_commonmsg` VALUES ('1', '还好正常', '貌似不正常', '2016-03-06 13:47:51');
 INSERT INTO `elec_commonmsg` VALUES ('2', 'fdsgdfs', 'gfh', '2016-03-26 11:15:57');
+
 INSERT INTO `elec_systemddl` VALUES ('1', '所属单位', '1', '重庆');
 INSERT INTO `elec_systemddl` VALUES ('2', '所属单位', '2', '上海');
 INSERT INTO `elec_systemddl` VALUES ('3', '性别', '1', '女');
@@ -99,6 +100,14 @@ INSERT INTO `elec_systemddl` VALUES ('4', '性别', '2', '男');
 INSERT INTO `elec_systemddl` VALUES ('5', '是否在职', '1', '在职');
 INSERT INTO `elec_systemddl` VALUES ('6', '是否在职', '2', '离职');
 INSERT INTO `elec_systemddl` VALUES ('7', '所属单位', '3', '北京');
+
+insert elec_systemddl values( 8,'角色类型',1,'系统管理员');
+insert elec_systemddl values( 9,'角色类型',2,'高级管理员');
+insert elec_systemddl values( 10,'角色类型',3,'中级管理员');
+insert elec_systemddl values( 11,'角色类型',4,'业务用户' );
+insert elec_systemddl values( 12,'角色类型',5,'一般用户' );
+insert elec_systemddl values( 13,'角色类型',6,'普通用户' );
+
 INSERT INTO `elec_text` VALUES ('40288ac8527775a201527775af8a0001', 'yzx', '2016-01-25 14:25:46', '测试mark', null, null, null, null);
 INSERT INTO `elec_user` VALUES ('1', '1', '张三', 'zhangsan', '123456', '1', null, null, '155556666', null, null, '1', '2016-04-20 13:44:42', null, null);
 INSERT INTO `elec_user` VALUES ('2', '2', '李四', 'lisi', '1234567', '2', null, null, '125478965', null, null, '1', '2016-04-21 13:45:39', null, null);
