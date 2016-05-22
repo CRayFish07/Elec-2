@@ -33,7 +33,7 @@
 	</HEAD>
 		
 	<body>
-	 <Form name="Form1" id="Form1"  method="post" style="margin:0px;">
+	 <s:form name="Form1" id="Form1"  method="post" cssStyle="margin:0px;">
 		<table cellSpacing="1" cellPadding="0" width="90%" align="center" bgColor="#f5fafe" border="0">
 			<TBODY>
 				<tr>
@@ -65,9 +65,9 @@
 				
 			</TBODY>
 		  </table>
- </Form>
+ </s:form>
 
-<Form  name="Form2" id="Form2"  method="post" style="margin:0px;">
+<s:form  name="Form2" id="Form2"  method="post" cssStyle="margin:0px;">
  
   <table cellSpacing="1" cellPadding="0" width="90%" align="center" bgColor="#f5fafe" border="0">
  <tr>
@@ -75,202 +75,26 @@
    <fieldset style="width:100%; border : 1px solid #73C8F9;text-align:left;COLOR:#023726;FONT-SIZE: 12px;"><legend align="left">权限分配</legend>
  
      <table cellSpacing="0" cellPadding="0" width="90%" align="center" bgColor="#f5fafe" border="0">			 
-			  <tr>
-				 <td class="ta_01" colspan=2 align="left" width="100%" > 
-				  
-						<br>
-				         
-				          技术设施维护管理 : 
-				       
-				           
-   	                         <input type="checkbox"  name="selectoper" value="a" >
-				             仪器设备管理
-						      
-				                &nbsp;&nbsp;&nbsp;
-				      	      
-				          
-				           
-				     	 
-   	                         <input type="checkbox"  name="selectoper" value="b" >
-				             设备校准检修
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				        
-				     
-				     
-				           
-				     	 
-   	                         <input type="checkbox"  name="selectoper" value="c" >
-				             设备购置计划
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				        
-				     
-				     
-				      
-						<br>
-				         
-				          技术资料图纸管理 : 
-				       
-				           
-   	                         <input type="checkbox"  name="selectoper" value="d" >
-				             资料图纸管理
-						      
-				                &nbsp;&nbsp;&nbsp;
-				      	      
-				          
-				      
-						<br>
-				         
-				          站点设备运行管理 : 
-				       
-				           
-   	                         <input type="checkbox"  name="selectoper" value="e" >
-				             站点基本信息
-						      
-				                &nbsp;&nbsp;&nbsp;
-				      	      
-				          
-				           
-				     	 
-   	                         <input type="checkbox"  name="selectoper" value="f" >
-				             运行情况
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				        
-				     
-				     
-				           
-				     	 
-   	                         <input type="checkbox"  name="selectoper" value="g" >
-				             维护情况
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				        
-				     
-				     
-				      
-						<br>
-				         
-				           &nbsp;&nbsp;&nbsp;
-				         
-				         
-				 
-				         
-				          监测台建筑管理 : 
-				       
-				           
-   	                         <input type="checkbox"  name="selectoper" value="k" >
-				             监测台建筑管理
-						      
-				          
-				      
-						<br>
-				         
-				           &nbsp;&nbsp;&nbsp;
-				         
-				           &nbsp;&nbsp;&nbsp;
-				         
-				           &nbsp;&nbsp;&nbsp;
-				         
-				           &nbsp;&nbsp;&nbsp;
-				         
-				          系统管理 : 
-				       
-				           
-   	                         <input type="checkbox"  name="selectoper" value="l" >
-				             角色管理
-						      
-				                &nbsp;&nbsp;&nbsp;
-				      	      
-				                &nbsp;&nbsp;&nbsp;
-				      	      
-				                &nbsp;&nbsp;&nbsp;
-				      	      
-				          
-				           
-				     	 
-   	                         <input type="checkbox"  name="selectoper" value="m" >
-				             待办事宜
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				        
-				     
-				     
-				           
-				     	 
-   	                         <input type="checkbox"  name="selectoper" value="n" >
-				             数据字典维护
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				        
-				     
-				     
-				      
-						<br>
-				         
-				           &nbsp;&nbsp;&nbsp;
-				         
-				           &nbsp;&nbsp;&nbsp;
-				         
-				          操作权限分配 : 
-				       
-				           
-   	                         <input type="checkbox"  name="selectoper" value="o" >
-				             新增功能
-						      
-				                &nbsp;&nbsp;&nbsp;
-				      	      
-				          
-				           
-				     	 
-   	                         <input type="checkbox"  name="selectoper" value="p" >
-				             删除功能
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				        
-				     
-				     
-				           
-				     	 
-   	                         <input type="checkbox"  name="selectoper" value="q" >
-				             编辑功能
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				              &nbsp;&nbsp;&nbsp;
-				            
-				        
-				     
-				     
-				      
-				   </td>
-				</tr>						
+				<s:set value="%{''}" scope="request" var="parentCode"></s:set>
+				  <s:if test="%{#request.xmlList!=null && #request.xmlList.size()>0}">
+				  	<s:iterator value="#request.xmlList" var="xml" status="st">
+				  		<s:if test="%{#xml.parentCode.equals(#request.parentCode)}">
+				  			<input type="checkbox"  name="selectoper" value="#xml.code" >
+				  			<s:property value="#xml.name"/>
+				  		</s:if>
+				  		<s:else>
+				  			<s:if test="%{#st.count != 1}"><br/></s:if>
+				  			<s:set value="#xml.parentCode" scope="request" var="parentCode"></s:set>
+				  			
+				  			<s:iterator begin="0" end="%{8-#xml.parentName.length()}" step="1">
+				  			&nbsp;&nbsp;&nbsp;
+				  			</s:iterator>
+				  			<s:property value="#xml.parentName"/>:
+				  			<input type="checkbox"  name="selectoper" value="#xml.code" >
+				  			<s:property value="#xml.name"/>
+				  		</s:else>
+				  	</s:iterator>
+				  </s:if>			  
 				 <input type="hidden" name="roleStr" >
 				 <input type="hidden" name="roleid" >						
 		 </table>	
@@ -279,6 +103,6 @@
 	 </tr>					
   </table>
 		    				    
-	</Form>
+	</s:form>
 	</body>
 </HTML>

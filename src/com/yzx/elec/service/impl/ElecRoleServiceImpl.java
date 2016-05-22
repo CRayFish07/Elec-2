@@ -6,7 +6,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
 
+import org.apache.struts2.ServletActionContext;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -45,7 +47,10 @@ public class ElecRoleServiceImpl implements IElecRoleService {
 
 	@Override
 	public List<XmlObject> readRoleFunctionList() {
-		File f = new File("F:\\WorkSpace\\elec\\Elec\\src\\Function.xml");
+		ServletContext context = ServletActionContext.getServletContext();
+		String realPath = context.getRealPath("/WEB-INF/classes/Function.xml");
+		
+		File f = new File(realPath);
 		SAXReader reader = new SAXReader();
 		Document document = null;
 		try {

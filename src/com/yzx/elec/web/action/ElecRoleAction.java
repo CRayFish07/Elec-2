@@ -29,7 +29,7 @@ public class ElecRoleAction extends BaseAction {
 		
 		//从Function.xml文件中查询到所有权限
 		List<XmlObject> functionList = roleService.readRoleFunctionList();
-		
+		request.setAttribute("xmlList", functionList);
 		
 		return "home";
 	}
