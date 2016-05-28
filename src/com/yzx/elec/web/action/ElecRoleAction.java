@@ -33,4 +33,8 @@ public class ElecRoleAction extends BaseAction {
 		
 		return "home";
 	}
+	
+	public String edit() {
+		return "edit";
+	}
 }

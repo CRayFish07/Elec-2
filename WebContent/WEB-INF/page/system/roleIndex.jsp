@@ -18,14 +18,12 @@
 		
        
        function selectRole(){
-          
           if(document.Form1.role.value=="0"){
-          
-             document.Form1.action="getAllRoleList.do";
+             document.Form1.action="system/elecRoleAction_home.do";
              document.Form1.submit();            
           }else{
-            alert("ok");
-            Pub.submitActionWithForm('Form2','roleEdit.jsp','Form1');
+           // alert("ok");
+            Pub.submitActionWithForm('Form2','system/elecRoleAction_edit.do','Form1');
           }
        }
 		
