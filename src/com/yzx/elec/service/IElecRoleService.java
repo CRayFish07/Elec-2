@@ -22,4 +22,10 @@ public interface IElecRoleService {
 	public List<ElecSystemDDLForm> getAllService();
 
 	public List<XmlObject> readRoleFunctionList();
+	
+	/**
+	 * 根据角色id查询角色拥有的权限集合
+	 * @param roleId 角色id
+	 */
+	public List<XmlObject> readEditXml(String roleId);
 }

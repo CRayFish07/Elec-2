@@ -15,9 +15,11 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.springframework.stereotype.Service;
 
+import com.yan.util.StringUtil;
 import com.yan.util.xml.XmlObject;
 import com.yzx.elec.dao.IElecRolePopedomDao;
 import com.yzx.elec.dao.IElecUserRoleDao;
+import com.yzx.elec.pojo.ElecRolePopedom;
 import com.yzx.elec.service.IElecRoleService;
 import com.yzx.elec.web.form.ElecSystemDDLForm;
 
@@ -39,6 +41,8 @@ public class ElecRoleServiceImpl implements IElecRoleService {
 	 */
 	@Resource(name=IElecUserRoleDao.DAO_NAME)
 	private IElecUserRoleDao userRoleDao;
+	
+	private static List<XmlObject> xmlList = null;
 
 	@Override
 	public List<ElecSystemDDLForm> getAllService() {
@@ -47,6 +51,9 @@ public class ElecRoleServiceImpl implements IElecRoleService {
 
 	@Override
 	public List<XmlObject> readRoleFunctionList() {
+		if(xmlList != null) {
+			return xmlList;
+		}
 		ServletContext context = ServletActionContext.getServletContext();
 		String realPath = context.getRealPath("/WEB-INF/classes/Function.xml");
 		
@@ -65,11 +72,11 @@ public class ElecRoleServiceImpl implements IElecRoleService {
 		
 		Element ele = document.getRootElement();
 		
-		ArrayList<XmlObject> result = null;
+//		ArrayList<XmlObject> result = null;
 		@SuppressWarnings("unchecked")
 		Iterator<Element> functions = ele.elementIterator("Function");
 		if(functions != null) {
-			result = new ArrayList<XmlObject>();
+			xmlList = new ArrayList<XmlObject>();
 			while(functions.hasNext()) {
 				Element e = functions.next();
 				
@@ -79,7 +86,64 @@ public class ElecRoleServiceImpl implements IElecRoleService {
 				obj.setParentCode(e.elementText("ParentCode"));
 				obj.setParentName(e.elementText("ParentName"));
 				
-				result.add(obj);
+				xmlList.add(obj);
+			}
+		}
+		return xmlList;
+	}
+
+	@Override
+	public List<XmlObject> readEditXml(String roleId) {
+		ElecRolePopedom rolePopedom = rolePopedomDao.findObjectById(new Integer(roleId));
+		String popedom = null;
+		if(rolePopedom != null) {
+			popedom = rolePopedom.getPopedomCode();
+		}
+		
+		return readXmlPopedom(popedom);
+	}
+	
+	/**
+	 * 根据角色权限得到权限列表
+	 */
+	private List<XmlObject> readXmlPopedom(String popedom) {
+		
+		List<XmlObject> _xmlList = readRoleFunctionList();
+	
+		List<XmlObject> result = new ArrayList<XmlObject>();
+		for(XmlObject obj : _xmlList) {
+			if(obj == null) {
+				continue;
+			}
+			
+			//角色是否拥有此权限
+			if(!StringUtil.isEmpty(popedom) && popedom.contains(obj.getCode())) {
+				obj.setFlag(1);
+			} else {
+				obj.setFlag(0);
+			}
+			
+			result.add(obj);
+		}
+		return result;
+	}
+
+	/**
+	 * 拷贝权限列表
+	 */
+	@SuppressWarnings("unused")
+	private List<XmlObject> copyFunctionList() {
+		List<XmlObject> _xmlList = readRoleFunctionList();
+		if(xmlList == null) {
+			return null;
+		}
+		
+		List<XmlObject> result = new ArrayList<XmlObject>();
+		for(XmlObject obj : _xmlList) {
+			if(obj == null) {
+				result.add(null);
+			} else {
+				result.add(obj.copySelf());
 			}
 		}
 		return result;
