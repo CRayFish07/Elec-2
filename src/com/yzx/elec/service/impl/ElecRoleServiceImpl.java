@@ -22,6 +22,7 @@ import com.yzx.elec.dao.IElecUserRoleDao;
 import com.yzx.elec.pojo.ElecRolePopedom;
 import com.yzx.elec.service.IElecRoleService;
 import com.yzx.elec.web.form.ElecSystemDDLForm;
+import com.yzx.elec.web.form.ElecUserForm;
 
 /**
  * ½ÇÉ«·þÎñ
@@ -147,5 +148,10 @@ public class ElecRoleServiceImpl implements IElecRoleService {
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public List<ElecUserForm> findElecUserListByRoleId(String roleId) {
+		return null;
 	}
 }

@@ -111,3 +111,12 @@ insert elec_systemddl values( 13,'角色类型',6,'普通用户' );
 INSERT INTO `elec_text` VALUES ('40288ac8527775a201527775af8a0001', 'yzx', '2016-01-25 14:25:46', '测试mark', null, null, null, null);
 INSERT INTO `elec_user` VALUES ('1', '1', '张三', 'zhangsan', '123456', '1', null, null, '155556666', null, null, '1', '2016-04-20 13:44:42', null, null);
 INSERT INTO `elec_user` VALUES ('2', '2', '李四', 'lisi', '1234567', '2', null, null, '125478965', null, null, '1', '2016-04-21 13:45:39', null, null);
+
+select case roleId 
+ when '1' then '1' else '0' end as flag,
+ elec_user.UserId,
+ elec_user.UserName,
+ elec_user.LogonName
+ from elec_user_role
+ right join elec_user
+ on elec_user_role.userId = elec_user.UserId

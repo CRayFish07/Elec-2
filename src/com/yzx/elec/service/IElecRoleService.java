@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.yan.util.xml.XmlObject;
 import com.yzx.elec.web.form.ElecSystemDDLForm;
+import com.yzx.elec.web.form.ElecUserForm;
 
 /**
  * 
@@ -28,4 +29,9 @@ public interface IElecRoleService {
 	 * @param roleId 角色id
 	 */
 	public List<XmlObject> readEditXml(String roleId);
+
+	/**
+	 * 根据角色id查找对应的用户列表
+	 */
+	public List<ElecUserForm> findElecUserListByRoleId(String roleId);
 }

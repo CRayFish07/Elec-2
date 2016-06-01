@@ -9,6 +9,7 @@ import com.yzx.elec.service.IElecRoleService;
 import com.yzx.elec.service.IElecSystemDDlService;
 import com.yzx.elec.web.form.ElecRolePopedomForm;
 import com.yzx.elec.web.form.ElecSystemDDLForm;
+import com.yzx.elec.web.form.ElecUserForm;
 
 
 /**
@@ -45,8 +46,13 @@ public class ElecRoleAction extends BaseAction implements ModelDriven<ElecRolePo
 	
 	public String edit() {
 		String roleId = form.getRole();
+		
+		//查询权限集合
 		List<XmlObject> xmlList = roleService.readEditXml(roleId);
 		request.setAttribute("xmlList", xmlList);
+		
+		List<ElecUserForm> userList = roleService.findElecUserListByRoleId(roleId);
+		request.setAttribute("userList", userList);
 		return "edit";
 	}
 
