@@ -15,6 +15,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.springframework.stereotype.Service;
 
+import com.yan.util.ColUtil;
 import com.yan.util.StringUtil;
 import com.yan.util.xml.XmlObject;
 import com.yzx.elec.dao.IElecRolePopedomDao;
@@ -150,8 +151,40 @@ public class ElecRoleServiceImpl implements IElecRoleService {
 		return result;
 	}
 
+	
+	
 	@Override
 	public List<ElecUserForm> findElecUserListByRoleId(String roleId) {
-		return null;
+		//查询到的原始数据
+		List<Object[]> dataList = userRoleDao.findUserListByRoleId(roleId);
+		
+		List<ElecUserForm> userFormList = changeDataList2UserFormList(dataList);
+		
+		return userFormList;
 	}
+
+	private List<ElecUserForm> changeDataList2UserFormList(List<Object[]> dataList) {
+		if(ColUtil.isEmpty(dataList)) {
+			return null;
+		}
+		
+		List<ElecUserForm> formList = new ArrayList<ElecUserForm>();
+		
+		for(Object[] userInfo : dataList) {
+			if(ColUtil.isEmpty(userInfo)) {
+				continue;
+			}
+			
+			ElecUserForm userForm = new ElecUserForm();
+			userForm.setFlag((String)userInfo[0]);
+			userForm.setUserId((int)userInfo[1]);
+			userForm.setUserName((String)userInfo[2]);
+			userForm.setLogonName((String)userInfo[3]);
+			
+			formList.add(userForm);
+		}
+		
+		return formList;
+	}
+	
 }

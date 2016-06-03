@@ -40,5 +40,4 @@ public interface ICommonDao<T> {
 	 */
 	public List<T> findObjectsByConditions(String conditionHql, ArrayList<String> params, LinkedHashMap<String, String> orderBy);
 	public void deleteObject(T t);
-	
 }

@@ -130,5 +130,5 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 	public void deleteObject(T t) {
 		ht.delete(t);
 	}
-	
+
 }

@@ -24,6 +24,13 @@ public class ElecUserForm {
 	 * =null时，修改保存
 	 */
 	private String viewflag;
+	
+	/**
+	 * 是否是指定角色
+	 * ==1是，==0不是
+	 */
+	private String flag;
+	
 	public int getUserId() {
 		return userId;
 	}
@@ -119,5 +126,11 @@ public class ElecUserForm {
 	}
 	public void setViewflag(String viewflag) {
 		this.viewflag = viewflag;
+	}
+	public String getFlag() {
+		return flag;
+	}
+	public void setFlag(String flag) {
+		this.flag = flag;
 	}
 }
