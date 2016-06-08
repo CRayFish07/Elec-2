@@ -55,5 +55,11 @@ public class ElecRoleAction extends BaseAction implements ModelDriven<ElecRolePo
 		request.setAttribute("userList", userList);
 		return "edit";
 	}
+	
+	public String save() {
+		roleService.saveRole(form);
+		
+		return "save";
+	}
 
 }

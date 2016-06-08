@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yan.util.xml.XmlObject;
+import com.yzx.elec.web.form.ElecRolePopedomForm;
 import com.yzx.elec.web.form.ElecSystemDDLForm;
 import com.yzx.elec.web.form.ElecUserForm;
 
@@ -34,4 +35,9 @@ public interface IElecRoleService {
 	 * 根据角色id查找对应的用户列表
 	 */
 	public List<ElecUserForm> findElecUserListByRoleId(String roleId);
+
+	/**
+	 * 保存角色
+	 */
+	public void saveRole(ElecRolePopedomForm form);
 }

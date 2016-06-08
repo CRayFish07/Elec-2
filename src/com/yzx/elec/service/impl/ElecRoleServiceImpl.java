@@ -14,6 +14,9 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yan.util.ColUtil;
 import com.yan.util.StringUtil;
@@ -21,7 +24,9 @@ import com.yan.util.xml.XmlObject;
 import com.yzx.elec.dao.IElecRolePopedomDao;
 import com.yzx.elec.dao.IElecUserRoleDao;
 import com.yzx.elec.pojo.ElecRolePopedom;
+import com.yzx.elec.pojo.ElecUserRole;
 import com.yzx.elec.service.IElecRoleService;
+import com.yzx.elec.web.form.ElecRolePopedomForm;
 import com.yzx.elec.web.form.ElecSystemDDLForm;
 import com.yzx.elec.web.form.ElecUserForm;
 
@@ -30,6 +35,7 @@ import com.yzx.elec.web.form.ElecUserForm;
  * @author yzx<br/>
  * 创建日期 2016年4月29日
  */
+@Transactional(readOnly=true)
 @Service(IElecRoleService.SERVICE_NAME)
 public class ElecRoleServiceImpl implements IElecRoleService {
 	/**
@@ -185,6 +191,48 @@ public class ElecRoleServiceImpl implements IElecRoleService {
 		}
 		
 		return formList;
+	}
+
+	@Override
+	@Transactional(readOnly=false,isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED)
+	public void saveRole(ElecRolePopedomForm form) {
+		int roleId = Integer.parseInt(form.getRole());
+		
+		ElecRolePopedom rolePopedom = rolePopedomDao.findObjectById(roleId);
+		//是否只是更新
+		boolean update = true;
+		//角色不存在
+		if(rolePopedom == null) {
+			rolePopedom = new ElecRolePopedom();
+			rolePopedom.setRoleId(roleId);
+			update = false;
+		}
+		
+		//设置角色权限
+		String popedoms = StringUtil.strArray2OneString(form.getSelectoper(), null);
+		//设置权限code
+		rolePopedom.setPopedomCode(popedoms);
+		if(update) {
+			rolePopedomDao.update(rolePopedom);
+		} else {
+			rolePopedomDao.save(rolePopedom);
+		}
+		
+		
+		//移除掉所有的此角色和用户的关联
+		userRoleDao.deleteObjectsByRoleId(roleId);
+		String[] selectUsers = form.getSelectuser();
+		List<ElecUserRole> userRoles = new ArrayList<ElecUserRole>();
+		if(!ColUtil.isEmpty(selectUsers)) {
+			for(String userId : selectUsers) {
+				ElecUserRole userRole = new ElecUserRole();
+				userRole.setRoleId(roleId);
+				userRole.setUserId(Integer.parseInt(userId));
+				userRoles.add(userRole);
+			}
+		}
+		
+		userRoleDao.saveAllEntities(userRoles);
 	}
 	
 }

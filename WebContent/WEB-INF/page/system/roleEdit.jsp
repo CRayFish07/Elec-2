@@ -9,14 +9,15 @@
  
     <table cellSpacing="0" cellPadding="0" width="90%" align="center" bgColor="#f5fafe" border="0">
 		<s:set value="%{''}" scope="request" var="parentCode"></s:set>
+		<input type="checkbox" id="allCheckBox" name="allCheckBox" onclick="onClickAllCheckBox()" value="" />全选/全不选<br/>
 		<s:if test="%{#request.xmlList!=null && #request.xmlList.size()>0}">
 			<s:iterator value="#request.xmlList" var="xml" status="st">
 				<s:if test="%{#xml.parentCode.equals(#request.parentCode)}">
 					<s:if test="%{#xml.flag==0}">
-						<input type="checkbox" name="selectoper" value="#xml.code">
+						<input type="checkbox" name="selectoper" value="<s:property value='#xml.code'/>">
 					</s:if>
 					<s:else>
-						<input type="checkbox" name="selectoper" value="#xml.code" checked>
+						<input type="checkbox" name="selectoper" value="<s:property value='#xml.code'/>" checked>
 					</s:else>
 					<s:property value="#xml.name" />
 				</s:if>
@@ -29,17 +30,17 @@
 					<s:iterator begin="0" end="%{8-#xml.parentName.length()}" step="1">&nbsp;&nbsp;&nbsp;</s:iterator>
 					<s:property value="#xml.parentName" />:
 	  				<s:if test="%{#xml.flag==0}">
-						<input type="checkbox" name="selectoper" value="#xml.code">
+						<input type="checkbox" name="selectoper" value="<s:property value='#xml.code'/>">
 					</s:if>
 					<s:else>
-						<input type="checkbox" name="selectoper" value="#xml.code" checked>
+						<input type="checkbox" name="selectoper" value="<s:property value='#xml.code'/>" checked>
 					</s:else>
 					<s:property value="#xml.name" />
 				</s:else>
 			</s:iterator>
 		</s:if>
 			<input type="hidden" name="roleStr" >
-			<input type="hidden" name="roleid" >						
+			<input type="hidden" name="role" >						
 		 </table>	
         </fieldset>
 	  </td>
@@ -63,19 +64,28 @@
 				   <td class="ta_01"  align="center" width="40%" height=22 background="../images/tablehead.jpg">登录名</td>
 				   <td class="ta_01"  align="center" width="40%" height=22 background="../images/tablehead.jpg">用户姓名</td>
 				</tr>
-				 <tr onmouseover="this.style.backgroundColor = 'white'"
-					onmouseout="this.style.backgroundColor = '#F5FAFE';">
-					<td style="HEIGHT: 22px" class="ta_01" align="center" width="20%">
-						<input type="checkbox" name="selectuser" value="123456789"
-							checked>
-					</td>
-					<td style="HEIGHT: 22px" class="ta_01" align="center" width="40%">
-						zs
-					</td>
-					<td style="HEIGHT: 22px" class="ta_01" align="center" width="40%">
-						张三
-					</td>
-				</tr>
+				<s:if test="%{#request.userList!=null && #request.userList.size>0}">
+					<s:iterator value="#request.userList" var="user">
+						<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
+							<td style="HEIGHT: 22px" class="ta_01" align="center" width="20%">
+								<s:if test="%{#user.flag==1}">
+									<input type="checkbox" name="selectuser" value="<s:property value='#user.userId'/>" checked>
+								</s:if>
+								<s:else>
+									<input type="checkbox" name="selectuser" value="<s:property value='#user.userId'/>">
+								</s:else>
+							</td>
+							
+							<td style="HEIGHT: 22px" class="ta_01" align="center" width="40%">
+								<s:property value="#user.logonName"/>
+							</td>
+							
+							<td style="HEIGHT: 22px" class="ta_01" align="center" width="40%">
+								<s:property value="#user.userName"/>
+							</td>
+						</tr>
+					</s:iterator>
+				</s:if>
 		</table>
     </fieldset>
 	 </td>

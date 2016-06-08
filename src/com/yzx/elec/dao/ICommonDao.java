@@ -40,4 +40,10 @@ public interface ICommonDao<T> {
 	 */
 	public List<T> findObjectsByConditions(String conditionHql, ArrayList<String> params, LinkedHashMap<String, String> orderBy);
 	public void deleteObject(T t);
+	
+	/**
+	 * 存储实体集合
+	 * @param userRoles
+	 */
+	public void saveAllEntities(List<T> entites);
 }

@@ -8,25 +8,36 @@
 		<script language="javascript"  src="${pageContext.request.contextPath }/script/function.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath }/script/pub.js"></script>
 		<script language="javascript">
-		  
-		 function saveRole(){
-		 
-           document.Form2.roleid.value=document.Form1.role.value;
-		   document.Form2.action="saveRole.do";
-		   document.Form2.submit();
-		}
-		
-       
-       function selectRole(){
-          if(document.Form1.role.value=="0"){
-             document.Form1.action="system/elecRoleAction_home.do";
-             document.Form1.submit();            
-          }else{
-           // alert("ok");
-            Pub.submitActionWithForm('Form2','system/elecRoleAction_edit.do','Form1');
-          }
-       }
-		
+			function saveRole() {
+				document.Form2.role.value = document.Form1.role.value;
+				document.Form2.action = "system/elecRoleAction_save.do";
+				document.Form2.submit();
+			}
+
+			function selectRole() {
+				if (document.Form1.role.value == "0") {
+					document.Form1.action = "system/elecRoleAction_home.do";
+					document.Form1.submit();
+				} else {
+					// alert("ok");
+					Pub.submitActionWithForm('Form2',
+							'system/elecRoleAction_edit.do', 'Form1');
+				}
+			}
+
+			function onClickAllCheckBox() {
+				var allCheckBx = document.getElementById("allCheckBox");
+				if (allCheckBx == null) {
+					return;
+				}
+				var checked = allCheckBx.checked;
+
+				var operCheckBxs = document.getElementsByName("selectoper");
+				for (var i = 0; i < operCheckBxs.length; i++) {
+					var oneBx = operCheckBxs[i];
+					oneBx.checked = checked;
+				}
+			}
 		</script>
 	</HEAD>
 		
@@ -77,7 +88,7 @@
 				  <s:if test="%{#request.xmlList!=null && #request.xmlList.size()>0}">
 				  	<s:iterator value="#request.xmlList" var="xml" status="st">
 				  		<s:if test="%{#xml.parentCode.equals(#request.parentCode)}">
-				  			<input type="checkbox"  name="selectoper" value="#xml.code" >
+				  			<input type="checkbox"  name="selectoper" value="<s:property value='#xml.code'/>" >
 				  			<s:property value="#xml.name"/>
 				  		</s:if>
 				  		<s:else>
@@ -88,13 +99,13 @@
 				  			&nbsp;&nbsp;&nbsp;
 				  			</s:iterator>
 				  			<s:property value="#xml.parentName"/>:
-				  			<input type="checkbox"  name="selectoper" value="#xml.code" >
+				  			<input type="checkbox"  name="selectoper" value="<s:property value='#xml.code'/>" >
 				  			<s:property value="#xml.name"/>
 				  		</s:else>
 				  	</s:iterator>
 				  </s:if>			  
 				 <input type="hidden" name="roleStr" >
-				 <input type="hidden" name="roleid" >						
+				 <input type="hidden" name="role" >						
 		 </table>	
         </fieldset>
 	  </td>

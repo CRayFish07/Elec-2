@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.stereotype.Repository;
@@ -53,6 +54,19 @@ public class ElecUserRoleDaoImpl extends CommonDaoImpl<ElecUserRole> implements 
 		});
 		
 		return result;
+	}
+
+
+	@Override
+	public void deleteObjectsByRoleId(final int roleId) {
+		ht.execute(new HibernateCallback() {
+			@Override
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				SQLQuery sqlQuery = session.createSQLQuery("delete from elec_user_role where roleId="+roleId);
+				sqlQuery.executeUpdate();
+				return null;
+			}
+		});
 	}
 
 }

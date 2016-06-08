@@ -131,4 +131,9 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 		ht.delete(t);
 	}
 
+	@Override
+	public void saveAllEntities(List<T> entites) {
+		ht.saveOrUpdateAll(entites);
+	}
+
 }
