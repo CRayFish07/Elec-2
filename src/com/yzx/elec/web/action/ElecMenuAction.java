@@ -3,22 +3,35 @@ package com.yzx.elec.web.action;
 import java.util.List;
 
 import com.opensymphony.xwork2.ModelDriven;
+import com.xiang.encrypt.Md5Util;
 import com.yzx.elec.container.ServiceProvider;
 import com.yzx.elec.service.IElecCommonMsgService;
+import com.yzx.elec.service.IElecUserService;
 import com.yzx.elec.web.form.ElecCommonMsgForm;
 import com.yzx.elec.web.form.ElecMenuForm;
+import com.yzx.elec.web.form.ElecUserForm;
 
 public class ElecMenuAction extends BaseAction implements ModelDriven<ElecMenuForm> {
 	
 	private static final long serialVersionUID = 1L;
-	private ElecMenuForm emf = new ElecMenuForm();
+	private ElecMenuForm form = new ElecMenuForm();
+	
+	private IElecUserService userService = (IElecUserService)ServiceProvider.getService(IElecUserService.SERVICE_NAME);
 	
 	@Override
 	public ElecMenuForm getModel() {
-		return emf;
+		return form;
 	}
 	
 	public String home() {
+		ElecUserForm userForm = new ElecUserForm();
+		userForm.setLogonName(form.getName());
+		userForm.setLogonPassword(Md5Util.getInstance().makeMD5(form.getPassword()));
+		List<ElecUserForm> forms = userService.findObjectsByConditions(userForm);
+		if(forms == null || forms.get(0) == null) {
+			this.addFieldError("error", "µÇÂ¼Ê§°Ü£¬ÓÃ»§Ãû»òÃÜÂë´íÎó");
+			return "error";
+		}
 		return "home";
 	}
 	

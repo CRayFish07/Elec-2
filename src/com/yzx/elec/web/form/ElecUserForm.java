@@ -20,6 +20,11 @@ public class ElecUserForm {
 	private String remark;
 	
 	/**
+	 * 是否修改密码，如果修改了密码，需要进行md5密码加密
+	 */
+	private boolean modify;
+	
+	/**
 	 * =1时，只是查看明细，并不修改保存
 	 * =null时，修改保存
 	 */
@@ -132,5 +137,11 @@ public class ElecUserForm {
 	}
 	public void setFlag(String flag) {
 		this.flag = flag;
+	}
+	public boolean isModify() {
+		return modify;
+	}
+	public void setModify(boolean modify) {
+		this.modify = modify;
 	}
 }

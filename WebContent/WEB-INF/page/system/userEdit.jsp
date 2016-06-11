@@ -69,7 +69,13 @@
 			theForm.remark.focus();
 			return false; 
         }
-		 
+		
+	  	if(theForm.logonPassword.value == theForm.logonPassword.defaultValue) {
+	  		theForm.modify.value = false;
+	  	} else {
+	  		theForm.modify.value = true;
+	  	}
+	   
 	   document.Form1.action="system/elecUserAction_save.do";
 	   document.Form1.submit();
 	   refreshOpener();
@@ -213,7 +219,8 @@
       
 	</td>
 </tr>
-</table>　
+</table>
+<input type="hidden" id="modify" name="modify" />　
 </s:form>
 
 </body>

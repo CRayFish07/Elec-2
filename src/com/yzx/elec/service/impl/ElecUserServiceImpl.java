@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.xiang.encrypt.Md5Util;
 import com.yan.util.ColUtil;
 import com.yan.util.StringUtil;
 import com.yzx.elec.dao.ICommonDao;
@@ -51,6 +52,7 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 		return changePo2VoList(dao.findObjectsByConditions(sb == null ? null : sb.toString(), params, null));
 	}
 	
+	
 	public List<ElecUserForm> changePo2VoList(List<ElecUser> pos) {
 		if(pos == null) {
 			return null;
@@ -74,6 +76,10 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 	@Transactional(isolation=Isolation.DEFAULT,readOnly=false,propagation=Propagation.REQUIRED)
 	@Override
 	public void save(ElecUserForm form) {
+		if(form.isModify()) {
+			form.setLogonPassword(Md5Util.getInstance().makeMD5(form.getLogonPassword()));
+		}
+		
 		ElecUser user = vo2Po(form);
 		if(user.getUserId() > 0) {
 			dao.update(user);

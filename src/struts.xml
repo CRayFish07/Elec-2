@@ -52,6 +52,7 @@
 	<package name="menu" extends="struts-default" namespace="/menu">
 		<action name="elecMenuAction_*" class="com.yzx.elec.web.action.ElecMenuAction" method="{1}">
             <result name="home">/WEB-INF/page/menu/home.jsp</result>
+            <result name="error">/WEB-INF/page/menu/index.jsp</result>
             <result name="title">/WEB-INF/page/menu/title.jsp</result>
             <result name="left">/WEB-INF/page/menu/left.jsp</result>
             <result name="change1">/WEB-INF/page/menu/change1.jsp</result>

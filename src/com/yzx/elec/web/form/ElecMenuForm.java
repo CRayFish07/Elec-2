@@ -11,6 +11,15 @@ public class ElecMenuForm {
 	private String textname;
 	private Date textdate;
 	private String textremark;
+	
+	/**
+	 * µÇÂ¼Ãû
+	 */
+	private String name;
+	/**
+	 * µÇÂ½ÃÜÂë
+	 */
+	private String password;
 
 	public ElecMenuForm() {
 	}
@@ -37,6 +46,22 @@ public class ElecMenuForm {
 
 	public void setTextremark(String textremark) {
 		this.textremark = textremark;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
