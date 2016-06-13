@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.xiang.encrypt.Md5Util;
+import com.yan.util.ColUtil;
 import com.yzx.elec.container.ServiceProvider;
 import com.yzx.elec.service.IElecCommonMsgService;
 import com.yzx.elec.service.IElecUserService;
@@ -24,14 +25,13 @@ public class ElecMenuAction extends BaseAction implements ModelDriven<ElecMenuFo
 	}
 	
 	public String home() {
-		ElecUserForm userForm = new ElecUserForm();
-		userForm.setLogonName(form.getName());
-		userForm.setLogonPassword(Md5Util.getInstance().makeMD5(form.getPassword()));
-		List<ElecUserForm> forms = userService.findObjectsByConditions(userForm);
-		if(forms == null || forms.get(0) == null) {
+		List<ElecUserForm> users = userService.findUserByIdAndPassword(form.getName(), Md5Util.getInstance().makeMD5(form.getPassword()));
+		if(ColUtil.isEmpty(users) || users.get(0) == null) {
 			this.addFieldError("error", "µÇÂ¼Ê§°Ü£¬ÓÃ»§Ãû»òÃÜÂë´íÎó");
 			return "error";
 		}
+		
+		request.getSession().setAttribute("global_user", users.get(0));
 		return "home";
 	}
 	

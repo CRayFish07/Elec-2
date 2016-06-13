@@ -136,4 +136,10 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 		ht.saveOrUpdateAll(entites);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findListBySql(String sql, Object[] params) {
+		return ht.find(sql, params);
+	}
+
 }

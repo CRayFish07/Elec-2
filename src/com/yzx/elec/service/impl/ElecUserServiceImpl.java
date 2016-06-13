@@ -27,6 +27,8 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 	private static final String IS_DUTY = "是否在职";
 	private static final String SEX = "性别";
 	
+	private static final String FIND_USER_SQL = "FROM ElecUser WHERE logonName=? AND logonPassword=?";
+	
 	@Override
 	@Resource(name=IElecUserDao.DAO_NAME)
 	protected void setDao(ICommonDao<ElecUser> dao) {
@@ -158,5 +160,12 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 		} else {
 			return "2";
 		}
+	}
+
+
+	@Override
+	public List<ElecUserForm> findUserByIdAndPassword(String logonName, String logonPassword) {
+		List<ElecUser> users = dao.findListBySql(FIND_USER_SQL, new Object[] {logonName, logonPassword});
+		return changePo2VoList(users);
 	}
 }

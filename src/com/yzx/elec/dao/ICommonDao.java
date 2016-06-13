@@ -46,4 +46,11 @@ public interface ICommonDao<T> {
 	 * @param userRoles
 	 */
 	public void saveAllEntities(List<T> entites);
+	
+	/**
+	 * 执行sql语句查找符合条件的对象
+	 * @param sql 要执行的sql语句
+	 * @param params 执行语句中的参数
+	 */
+	public List<T> findListBySql(String sql, Object[] params);
 }
