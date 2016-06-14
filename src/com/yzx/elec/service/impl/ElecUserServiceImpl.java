@@ -2,6 +2,7 @@ package com.yzx.elec.service.impl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -27,7 +28,14 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 	private static final String IS_DUTY = "是否在职";
 	private static final String SEX = "性别";
 	
+	/**
+	 * 查询用户hql语句
+	 */
 	private static final String FIND_USER_SQL = "FROM ElecUser WHERE logonName=? AND logonPassword=?";
+	private static final String FIND_USER_ROLES_BY_ID = "SELECT a.ddlcode, a.ddlname FROM elec_systemddl a"+
+														" INNER JOIN elec_user_role b ON a.ddlcode=b.roleid"+
+														" INNER JOIN elec_user c ON b.userid=c.userid"+
+														" WHERE c.userid=? AND a.keyword='角色类型'";
 	
 	@Override
 	@Resource(name=IElecUserDao.DAO_NAME)
@@ -167,5 +175,20 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 	public List<ElecUserForm> findUserByIdAndPassword(String logonName, String logonPassword) {
 		List<ElecUser> users = dao.findListBySql(FIND_USER_SQL, new Object[] {logonName, logonPassword});
 		return changePo2VoList(users);
+	}
+
+
+	@Override
+	public HashMap<Integer, String> findUserRolesByUserId(int userId) {
+		Object[] params = new Object[] {userId};
+		List<Object[]> list = dao.findObjectListBySql(FIND_USER_ROLES_BY_ID, params);
+		HashMap<Integer, String> result = null;
+		if(!ColUtil.isEmpty(list)) {
+			result = new HashMap<Integer, String>();
+			for(Object[] objes : list) {
+				result.put((int)objes[0], (String)objes[1]);
+			}
+		}
+		return result;
 	}
 }

@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateCallback;
@@ -110,6 +111,14 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 			}
 		}
 	}
+	
+	protected void setQueryParams(SQLQuery query, Object[] params) {
+		if(!ColUtil.isEmpty(params)) {
+			for(int i=0; i<params.length; i++) {
+				query.setParameter(i, params[i]);
+			}
+		}
+	}
 
 	private String getOrderByHql(LinkedHashMap<String, String> orderBy) {
 		if(ColUtil.isEmpty(orderBy)) {
@@ -140,6 +149,19 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 	@Override
 	public List<T> findListBySql(String sql, Object[] params) {
 		return ht.find(sql, params);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> findObjectListBySql(final String exeSql, final Object[] params) {
+		return (List<Object[]>)ht.execute(new HibernateCallback() {
+			@Override
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				SQLQuery sql = session.createSQLQuery(exeSql);
+				setQueryParams(sql, params);
+				return sql.list();
+			}
+		});
 	}
 
 }

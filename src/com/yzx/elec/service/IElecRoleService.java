@@ -1,5 +1,6 @@
 package com.yzx.elec.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -40,4 +41,9 @@ public interface IElecRoleService {
 	 * 保存角色
 	 */
 	public void saveRole(ElecRolePopedomForm form);
+
+	/**
+	 * 根据角色id查询角色对应的权限集合
+	 */
+	public String findRolePopedomsByRoleIds(ArrayList<Integer> roleIds);
 }

@@ -234,5 +234,17 @@ public class ElecRoleServiceImpl implements IElecRoleService {
 		
 		userRoleDao.saveAllEntities(userRoles);
 	}
+
+	@Override
+	public String findRolePopedomsByRoleIds(ArrayList<Integer> roleIds) {
+		if(ColUtil.isEmpty(roleIds)) {
+			return null;
+		}
+		
+		for(int roleId : roleIds) {
+			
+		}
+		return null;
+	}
 	
 }

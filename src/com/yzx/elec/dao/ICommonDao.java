@@ -48,9 +48,16 @@ public interface ICommonDao<T> {
 	public void saveAllEntities(List<T> entites);
 	
 	/**
-	 * 执行sql语句查找符合条件的对象
+	 * 执行hql语句查找符合条件的对象
 	 * @param sql 要执行的sql语句
 	 * @param params 执行语句中的参数
 	 */
-	public List<T> findListBySql(String sql, Object[] params);
+	public List<T> findListBySql(String hql, Object[] params);
+	
+	/**
+	 * 根据sql语句查询对象列表
+	 * @param exeSql 执行的sql语句
+	 * @param params 参数
+	 */
+	public List<Object[]> findObjectListBySql(String exeSql, Object[] params);
 }
