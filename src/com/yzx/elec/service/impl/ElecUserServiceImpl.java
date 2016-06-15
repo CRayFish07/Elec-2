@@ -35,7 +35,7 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 	private static final String FIND_USER_ROLES_BY_ID = "SELECT a.ddlcode, a.ddlname FROM elec_systemddl a"+
 														" INNER JOIN elec_user_role b ON a.ddlcode=b.roleid"+
 														" INNER JOIN elec_user c ON b.userid=c.userid"+
-														" WHERE c.userid=? AND a.keyword='角色类型'";
+														" WHERE c.userid=? AND a.keyword='角色类型' AND c.isDuty=1";
 	
 	@Override
 	@Resource(name=IElecUserDao.DAO_NAME)

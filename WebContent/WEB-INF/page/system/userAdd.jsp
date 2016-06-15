@@ -73,7 +73,7 @@
         }
 		 
 		 document.Form1.action="system/elecUserAction_save.do";
-		 document.Form1.modify = true;
+		 document.Form1.modify.value = true;
 		 document.Form1.submit();	 		 
 		 refreshOpener();
 	}
@@ -251,7 +251,7 @@
 					value="关闭" name="Reset1" onClick="window.close()"></td>
 			</tr>
 		</table>
-		<input type="hidden" id="modify" />
+		<input type="hidden" name="modify" id="modify" />
 	</s:form>
 
 </body>

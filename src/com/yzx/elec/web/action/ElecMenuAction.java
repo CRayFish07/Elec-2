@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import com.opensymphony.xwork2.ModelDriven;
 import com.xiang.encrypt.Md5Util;
 import com.yan.util.ColUtil;
+import com.yan.util.StringUtil;
 import com.yzx.elec.container.ServiceProvider;
 import com.yzx.elec.service.IElecCommonMsgService;
 import com.yzx.elec.service.IElecRoleService;
@@ -43,7 +44,7 @@ public class ElecMenuAction extends BaseAction implements ModelDriven<ElecMenuFo
 		//查询用户的角色
 		HashMap<Integer, String> roles = userService.findUserRolesByUserId(user.getUserId());
 		if(ColUtil.isEmpty(roles)) {
-			this.addFieldError("error", "登录失败，无任何权限");
+			this.addFieldError("error", "登录失败，无可用角色");
 			return "error";
 		}
 		
@@ -54,9 +55,14 @@ public class ElecMenuAction extends BaseAction implements ModelDriven<ElecMenuFo
 			roleIds.add(roleId.getKey());
 		}
 		String popedoms = roleService.findRolePopedomsByRoleIds(roleIds);
+		if(StringUtil.isEmpty(popedoms)) {
+			this.addFieldError("error", "登录失败，无任何权限");
+			return "error";
+		}
 		
 		request.getSession().setAttribute("global_user", user);
 		request.getSession().setAttribute("global_role", roles);
+		request.getSession().setAttribute("global_popedom", popedoms);
 		return "home";
 	}
 	

@@ -241,10 +241,16 @@ public class ElecRoleServiceImpl implements IElecRoleService {
 			return null;
 		}
 		
+		StringBuilder popedomString = new StringBuilder();
 		for(int roleId : roleIds) {
+			ElecRolePopedom rolePopedom = rolePopedomDao.findObjectById(roleId);
+			if(rolePopedom == null) {
+				continue;
+			}
 			
+			popedomString.append(rolePopedom.getPopedomCode());
 		}
-		return null;
+		return popedomString.toString();
 	}
 	
 }
