@@ -2,8 +2,6 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
 
 
-
-
 <HTML>
 <HEAD>
 <TITLE>Top</TITLE>
@@ -81,7 +79,7 @@ eval("document.location='"+action+"'");
     
     <td width="16%" height="19" bgcolor="#0965CA">
     <table cellSpacing="2" height="19" cellPadding="0" width="100%" border="0" ><tr><td valign="top">
-    <b><font color="#FFFFFF">欢迎您!&nbsp;&nbsp;&nbsp;admin</font></b>
+    <b><font color="#FFFFFF">欢迎您!&nbsp;&nbsp;&nbsp;${global_user.userName }</font></b>
     </td></tr></table>
     </td>
     <td width="46%" height="19" bgcolor="#0965CA">　</td>
@@ -89,9 +87,9 @@ eval("document.location='"+action+"'");
       <table border="0" width="100%" cellspacing="0" cellpadding="0">
         <tr>
           <td width="100%" align="center">
-          <A href="loading.jsp" target="mainFrame"><font color="#FFFFFF"><b>返回首页</b></font></a>
+          <A href="menu/elecMenuAction_loading.do" target="mainFrame"><font color="#FFFFFF"><b>返回首页</b></font></a>
           <font color="#FFFFFF"><b>|</b></font>
-          <A href="logout.do"   target="_top"> <font color="#FFFFFF"><b>重新登录</b></font></A>
+          <A href="menu/elecMenuAction_logout.do"   target="_top"> <font color="#FFFFFF"><b>重新登录</b></font></A>
           <font color="#FFFFFF"><b>|</b></font>
            <A href="javascript:parent.exitsys()" target="_top"> <font color="#FFFFFF"><b>退出系统</b></font></A>
           </td>

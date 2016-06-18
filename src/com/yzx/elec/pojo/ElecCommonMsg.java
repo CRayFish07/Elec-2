@@ -10,7 +10,7 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class ElecCommonMsg implements java.io.Serializable {
 
-	private String comId;
+	private int comId;
 	private String stationRun;
 	private String devRun;
 	private Date createDate;
@@ -18,11 +18,11 @@ public class ElecCommonMsg implements java.io.Serializable {
 	public ElecCommonMsg() {
 	}
 
-	public ElecCommonMsg(String comId) {
+	public ElecCommonMsg(int comId) {
 		this.comId = comId;
 	}
 
-	public ElecCommonMsg(String comId, String stationRun, String devRun,
+	public ElecCommonMsg(int comId, String stationRun, String devRun,
 			Date createDate) {
 		this.comId = comId;
 		this.stationRun = stationRun;
@@ -30,11 +30,11 @@ public class ElecCommonMsg implements java.io.Serializable {
 		this.createDate = createDate;
 	}
 
-	public String getComId() {
+	public int getComId() {
 		return this.comId;
 	}
 
-	public void setComId(String comId) {
+	public void setComId(int comId) {
 		this.comId = comId;
 	}
 

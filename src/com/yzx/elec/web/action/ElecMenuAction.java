@@ -109,4 +109,9 @@ public class ElecMenuAction extends BaseAction implements ModelDriven<ElecMenuFo
 	public String alermXZ() {
 		return "alermXZ";
 	}
+	
+	public String logout() {
+		request.getSession().invalidate();
+		return "logout";
+	}
 }

@@ -39,6 +39,7 @@
             	<param name="actionName">elecUserAction_home</param>
             	<param name="nameSpace">/system</param>
             </result>
+            <result name="error" type="redirect">/WEB-INF/page/menu/index.jsp</result>
         </action>
         <action name="elecRoleAction_*" class="com.yzx.elec.web.action.ElecRoleAction" method="{1}">
         	<result name="home">/WEB-INF/page/system/roleIndex.jsp</result>
@@ -63,6 +64,8 @@
             <result name="alermZD">/WEB-INF/page/menu/alermZD.jsp</result>
             <result name="alermSB">/WEB-INF/page/menu/alermSB.jsp</result>
             <result name="alermYS">/WEB-INF/page/menu/alermYS.jsp</result>
+            
+            <result name="logout">/WEB-INF/page/menu/index.jsp</result>
         </action>
 	</package>
 </struts>

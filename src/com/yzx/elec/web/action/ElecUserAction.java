@@ -1,8 +1,11 @@
 package com.yzx.elec.web.action;
 
+import java.util.HashMap;
 import java.util.List;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
+import com.yan.util.ColUtil;
 import com.yzx.elec.container.ServiceProvider;
 import com.yzx.elec.service.IElecSystemDDlService;
 import com.yzx.elec.service.IElecUserService;
@@ -26,9 +29,29 @@ public class ElecUserAction extends BaseAction implements ModelDriven<ElecUserFo
 	
 	
 	public String home() {
-		List<ElecUserForm> list = service.findObjectsByConditions(form);
-		request.setAttribute("userList", list);
-		return "home";
+		@SuppressWarnings("unchecked")
+		HashMap<Integer, String> roles = (HashMap<Integer, String>)request.getSession().getAttribute("global_role");
+		if(ColUtil.isEmpty(roles)) {
+			this.addFieldError("error", "登录失败，无任何权限");
+			return "error";
+		}
+		
+		if(roles.containsKey(0) || roles.containsKey(1)) {
+			List<ElecUserForm> list = service.findObjectsByConditions(form);
+			request.setAttribute("userList", list);
+			return "home";
+		} else {
+			ElecUserForm userForm = (ElecUserForm)request.getSession().getAttribute("global_user");
+			ElecUserForm detailUser = service.findObjectByVo(userForm);
+			
+			ActionContext.getContext().getValueStack().push(detailUser);
+			initSystemDDL();
+			return "edit";
+		}
+		
+//		List<ElecUserForm> list = service.findObjectsByConditions(form);
+//		request.setAttribute("userList", list);
+//		return "home";
 	}
 	
 	public String add() {
@@ -39,7 +62,8 @@ public class ElecUserAction extends BaseAction implements ModelDriven<ElecUserFo
 	
 	public String save() {
 		service.save(form);
-		return "save";
+		
+		return "delete";
 	}
 	
 	public String edit() {
