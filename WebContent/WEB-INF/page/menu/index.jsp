@@ -26,6 +26,11 @@ function check(){
 			return false;
 	    }
 }
+
+//切换验证码
+function changeImage() {
+	document.getElementById("checkWordImage").src = "image.jsp?timeStamp="+new Date().getTime();
+}
 </SCRIPT>
 <STYLE type=text/css>
 BODY { margin: 0px; }
@@ -61,16 +66,22 @@ FORM {
 								</tr>
 								<tr>
 									<td width="100"><img border="0" src="${pageContext.request.contextPath}/images/yonghu.gif" width="84" height="20"></td>
-									<td><s:textfield name="name" style="width: 100 px" value=""  maxlength="25"></s:textfield></td>
+									<td width="200"><s:textfield name="name" style="width: 100 px" value=""  maxlength="25"></s:textfield></td>
 								</tr>
 								<tr>
 									<td width="100"><img border="0" src="${pageContext.request.contextPath}/images/mima.gif" width="84" height="20"></td>
-									<td><s:password name="password" style="width: 100 px" value=""  maxlength="25"></s:password></td>
+									<td width="200"><s:password name="password" style="width: 100 px" value=""  maxlength="25"></s:password></td>
+								</tr>
+								<tr>
+									<td width="100"><img border="0" src="${pageContext.request.contextPath}/images/check.jpg" width="84" height="20"></td>
+									<td width="150">
+										<s:textfield name="checkWord" value=""  maxlength="25" cssStyle="width:50px;vertical-align:middle">
+										</s:textfield><img id="checkWordImage" alt="点击切换" src="image.jsp" width="55px" height="20px" style="vertical-align:middle;margin-left: 2px; cursor: hand" onclick="changeImage()">
+									</td>
 								</tr>
 								<tr>
 									<td width="100"></td>
 									<td width="100"><input type="submit" class=btn_mouseout onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="登   录" name="huifubtn"></td>
-
 								</tr>
 							</table>
 						</td>

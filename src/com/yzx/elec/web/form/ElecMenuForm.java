@@ -20,6 +20,8 @@ public class ElecMenuForm {
 	 * µÇÂ½ÃÜÂë
 	 */
 	private String password;
+	
+	private String checkWord;
 
 	public ElecMenuForm() {
 	}
@@ -62,6 +64,14 @@ public class ElecMenuForm {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getCheckWord() {
+		return checkWord;
+	}
+
+	public void setCheckWord(String checkWord) {
+		this.checkWord = checkWord;
 	}
 
 }
