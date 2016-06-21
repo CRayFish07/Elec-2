@@ -33,6 +33,12 @@ public class ElecMenuAction extends BaseAction implements ModelDriven<ElecMenuFo
 	}
 	
 	public String home() {
+		//检查校验码
+		if(!checkWord(form.getCheckWord())) {
+			this.addFieldError("error", "请输入正确的验证码");
+			return "error";
+		}
+		
 		//查询用户
 		List<ElecUserForm> users = userService.findUserByIdAndPassword(form.getName(), Md5Util.getInstance().makeMD5(form.getPassword()));
 		if(ColUtil.isEmpty(users) || users.get(0) == null) {
@@ -66,6 +72,15 @@ public class ElecMenuAction extends BaseAction implements ModelDriven<ElecMenuFo
 		return "home";
 	}
 	
+	private boolean checkWord(String checkWord) {
+		String sessionCheckWord = (String)request.getSession().getAttribute("checkWord");
+		if(sessionCheckWord == null) {
+			return false;
+		} else {
+			return sessionCheckWord.equals(checkWord);
+		}
+	}
+
 	public String title() {
 		return "title";
 	}

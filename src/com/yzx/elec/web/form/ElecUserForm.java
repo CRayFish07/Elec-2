@@ -36,6 +36,11 @@ public class ElecUserForm {
 	 */
 	private String flag;
 	
+	/**
+	 * Ð£ÑéÂë
+	 */
+	private String checkWord;
+	
 	public int getUserId() {
 		return userId;
 	}
@@ -143,5 +148,11 @@ public class ElecUserForm {
 	}
 	public void setModify(boolean modify) {
 		this.modify = modify;
+	}
+	public String getCheckWord() {
+		return checkWord;
+	}
+	public void setCheckWord(String checkWord) {
+		this.checkWord = checkWord;
 	}
 }

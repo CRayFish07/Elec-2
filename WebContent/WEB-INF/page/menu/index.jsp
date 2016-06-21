@@ -29,7 +29,7 @@ function check(){
 
 //切换验证码
 function changeImage() {
-	document.getElementById("checkWordImage").src = "image.jsp?timeStamp="+new Date().getTime();
+	document.getElementById("checkWordImage").src = "${pageContext.request.contextPath }/image.jsp?timeStamp="+new Date().getTime();
 }
 </SCRIPT>
 <STYLE type=text/css>
@@ -76,7 +76,7 @@ FORM {
 									<td width="100"><img border="0" src="${pageContext.request.contextPath}/images/check.jpg" width="84" height="20"></td>
 									<td width="150">
 										<s:textfield name="checkWord" value=""  maxlength="25" cssStyle="width:50px;vertical-align:middle">
-										</s:textfield><img id="checkWordImage" alt="点击切换" src="image.jsp" width="55px" height="20px" style="vertical-align:middle;margin-left: 2px; cursor: hand" onclick="changeImage()">
+										</s:textfield><img id="checkWordImage" alt="点击切换" src="${pageContext.request.contextPath }/image.jsp" width="55px" height="20px" style="vertical-align:middle;margin-left: 2px; cursor: hand" onclick="changeImage()">
 									</td>
 								</tr>
 								<tr>
