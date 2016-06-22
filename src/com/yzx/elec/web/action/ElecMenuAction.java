@@ -1,5 +1,6 @@
 package com.yzx.elec.web.action;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,6 +11,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.xiang.encrypt.Md5Util;
 import com.yan.util.ColUtil;
 import com.yan.util.StringUtil;
+import com.yzx.common.util.CookieUtil;
 import com.yzx.elec.container.ServiceProvider;
 import com.yzx.elec.service.IElecCommonMsgService;
 import com.yzx.elec.service.IElecRoleService;
@@ -32,7 +34,17 @@ public class ElecMenuAction extends BaseAction implements ModelDriven<ElecMenuFo
 		return form;
 	}
 	
-	public String home() {
+	public String home() throws UnsupportedEncodingException {
+		if(form.getRemeberMe() != null && form.getRemeberMe().equals("yes")) {
+			//添加帐号的cookie
+			addCookie(form.getName(), "account");
+		} else {
+			//添加帐号的cookie
+			addCookie(null, "account");
+		}
+		
+		String cook = CookieUtil.findCookie(request, "account");
+		
 		//检查校验码
 		if(!checkWord(form.getCheckWord())) {
 			this.addFieldError("error", "请输入正确的验证码");

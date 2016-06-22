@@ -1,5 +1,11 @@
+<%@page import="com.yan.util.StringUtil"%>
+<%@page import="org.apache.struts2.components.Include"%>
+<%@page import="com.yan.util.ColUtil"%>
 <%@ page language="java"  pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+
+<%@ include file="/cookie.jsp" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Language" content="zh-cn">
@@ -37,6 +43,10 @@ BODY { margin: 0px; }
 FORM {
 	MARGIN: 0px; BACKGROUND-COLOR: #ffffff
 } 
+
+#checkWord {
+	WIDTH:50px;
+}
 </STYLE>
 <title>国家电力监测中心</title>
 </head>
@@ -64,24 +74,36 @@ FORM {
 								<tr>
 									<s:fielderror name="error" ></s:fielderror>
 								</tr>
+								<%
+									String name = findCookie(request, "account");
+								%>
 								<tr>
 									<td width="100"><img border="0" src="${pageContext.request.contextPath}/images/yonghu.gif" width="84" height="20"></td>
-									<td width="200"><s:textfield name="name" style="width: 100 px" value=""  maxlength="25"></s:textfield></td>
+									<td><input type="text" name="name" width="80px" value='<%= name %>'  maxlength="25" /></td>
 								</tr>
 								<tr>
 									<td width="100"><img border="0" src="${pageContext.request.contextPath}/images/mima.gif" width="84" height="20"></td>
-									<td width="200"><s:password name="password" style="width: 100 px" value=""  maxlength="25"></s:password></td>
+									<td width="100"><input type="password" width="80px" value=""  maxlength="40"></input></td>
 								</tr>
 								<tr>
 									<td width="100"><img border="0" src="${pageContext.request.contextPath}/images/check.jpg" width="84" height="20"></td>
-									<td width="150">
-										<s:textfield name="checkWord" value=""  maxlength="25" cssStyle="width:50px;vertical-align:middle">
-										</s:textfield><img id="checkWordImage" alt="点击切换" src="${pageContext.request.contextPath }/image.jsp" width="55px" height="20px" style="vertical-align:middle;margin-left: 2px; cursor: hand" onclick="changeImage()">
+									<td>
+										<input name="checkWord" id="checkWord" type="text" maxlength="4" style="vertical-align:middle;" />
+										<img id="checkWordImage" alt="点击切换" src="${pageContext.request.contextPath }/image.jsp" width="55px" height="20px" style="vertical-align:middle;margin-left: 2px; cursor: hand" onclick="changeImage()" />
 									</td>
 								</tr>
 								<tr>
 									<td width="100"></td>
-									<td width="100"><input type="submit" class=btn_mouseout onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="登   录" name="huifubtn"></td>
+									<td width="200"><input type="submit" class=btn_mouseout onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="登   录" name="huifubtn"></td>
+								</tr>
+								<tr>
+									<td></td><td>
+									<% if(StringUtil.isEmpty(name)) {%>
+										<input name="remeberMe" type="checkbox" value="yes"/>
+									<% } else { %>
+										<input name="remeberMe" type="checkbox" value="yes" checked/>
+									<% } %>
+									<font size="2"><b>记住帐号</b></font></td>
 								</tr>
 							</table>
 						</td>

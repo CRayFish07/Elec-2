@@ -21,7 +21,15 @@ public class ElecMenuForm {
 	 */
 	private String password;
 	
+	/**
+	 * 验证码
+	 */
 	private String checkWord;
+	
+	/**
+	 * 是否记住
+	 */
+	private String remeberMe;
 
 	public ElecMenuForm() {
 	}
@@ -72,6 +80,14 @@ public class ElecMenuForm {
 
 	public void setCheckWord(String checkWord) {
 		this.checkWord = checkWord;
+	}
+
+	public String getRemeberMe() {
+		return remeberMe;
+	}
+
+	public void setRemeberMe(String remeberMe) {
+		this.remeberMe = remeberMe;
 	}
 
 }
