@@ -1,10 +1,9 @@
+<%@page import="com.yzx.common.util.CookieUtil"%>
 <%@page import="com.yan.util.StringUtil"%>
 <%@page import="org.apache.struts2.components.Include"%>
 <%@page import="com.yan.util.ColUtil"%>
 <%@ page language="java"  pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
-<%@ include file="/cookie.jsp" %>
 
 <html>
 <head>
@@ -75,7 +74,7 @@ FORM {
 									<s:fielderror name="error" ></s:fielderror>
 								</tr>
 								<%
-									String name = findCookie(request, "account");
+									String name = CookieUtil.findCookie(request, "account");
 								%>
 								<tr>
 									<td width="100"><img border="0" src="${pageContext.request.contextPath}/images/yonghu.gif" width="84" height="20"></td>
