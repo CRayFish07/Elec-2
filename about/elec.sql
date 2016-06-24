@@ -122,3 +122,15 @@ select
  on elec_user_role.userId = elec_user.UserId
  AND elec_user_role.roleId = '1'
  AND elec_user.isDuty = '1'
+ 
+ ------------------
+ ---创建 elec_log
+ ------------------
+ DROP TABLE IF EXISTS elec_log;
+ CREATE TABLE elec_log (
+ logId INT PRIMARY KEY auto_increment,
+ ipAddress VARCHAR(20),
+ opreateName VARCHAR(20) NOT NULL,
+ opreateDate DATE NOT NULL,
+ detail varchar(100)
+ ) DEFAULT CHARSET=utf8;

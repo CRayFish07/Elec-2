@@ -8,6 +8,10 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogConfigurationException;
+import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.impl.LogFactoryImpl;
 import org.apache.struts2.ServletActionContext;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -97,6 +101,7 @@ public class ElecRoleServiceImpl implements IElecRoleService {
 				xmlList.add(obj);
 			}
 		}
+		
 		return xmlList;
 	}
 

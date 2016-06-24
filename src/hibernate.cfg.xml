@@ -19,6 +19,7 @@
         <mapping resource="com/yzx/elec/pojo/ElecUser.hbm.xml"/>
         <mapping resource="com/yzx/elec/pojo/ElecUserRole.hbm.xml"/>
         <mapping resource="com/yzx/elec/pojo/ElecRolePopedom.hbm.xml"/>
+        <mapping resource="com/yzx/elec/pojo/ElecLog.hbm.xml"/>
     </session-factory>
     
 </hibernate-configuration>
