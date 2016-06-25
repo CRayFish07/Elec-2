@@ -2,10 +2,9 @@ package com.yzx.elec.service;
 
 import java.util.List;
 
-import com.yzx.elec.pojo.ElecSystemDDL;
 import com.yzx.elec.web.form.ElecSystemDDLForm;
 
-public interface IElecSystemDDlService extends ICommonService<ElecSystemDDL, ElecSystemDDLForm> {
+public interface IElecSystemDDlService {
 	public static final String SERVICE_NAME = "com.yzx.elec.service.impl.ElecSystemDDLServiceImpl";
 
 	/**
@@ -24,4 +23,6 @@ public interface IElecSystemDDlService extends ICommonService<ElecSystemDDL, Ele
 	 * @return 数据项列表
 	 */
 	public List<ElecSystemDDLForm> findDdlListByKeyword(String sex);
+
+	public Object findObjectsByConditions(ElecSystemDDLForm form);
 }

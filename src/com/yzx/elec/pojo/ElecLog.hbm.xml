@@ -8,11 +8,14 @@
             <column name="logId" />
             <generator class="increment" />
         </id>
+        <property name="ipAddress" type="string">
+        	<column name="ipAddress" length="20"/>
+        </property>
         <property name="opreateName" type="string">
             <column name="opreateName" length="20" not-null="true" />
         </property>
         <property name="opreateDate" type="date">
-            <column name="opreateDate" length="10" not-null="true" />
+            <column name="opreateDate" length="40" not-null="true" />
         </property>
         <property name="detail" type="string">
             <column name="detail" length="100" />

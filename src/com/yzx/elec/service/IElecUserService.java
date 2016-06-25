@@ -3,10 +3,9 @@ package com.yzx.elec.service;
 import java.util.HashMap;
 import java.util.List;
 
-import com.yzx.elec.pojo.ElecUser;
 import com.yzx.elec.web.form.ElecUserForm;
 
-public interface IElecUserService extends ICommonService<ElecUser, ElecUserForm> {
+public interface IElecUserService {
 	public static final String SERVICE_NAME = "com.yzx.elec.service.impl.ElecUserServiceImpl";
 	
 	public void deleteUsers(ElecUserForm... users);
@@ -21,4 +20,10 @@ public interface IElecUserService extends ICommonService<ElecUser, ElecUserForm>
 	 * @return key为角色id，value为角色名
 	 */
 	public HashMap<Integer, String> findUserRolesByUserId(int userId);
+
+	public List<ElecUserForm> findObjectsByConditions(ElecUserForm form);
+
+	public ElecUserForm findObjectByVo(ElecUserForm userForm);
+
+	public void save(ElecUserForm form);
 }

@@ -9,23 +9,14 @@ import java.util.Date;
  */
 public class ElecLogForm {
 	private Integer logId;
+	private String ipAddress;
 	private String opreateName;
-	private Date opreateDate;
+	private String opreateDate;
 	private String detail;
 
 	public ElecLogForm() {
 	}
 
-	public ElecLogForm(String opreateName, Date opreateDate) {
-		this.opreateName = opreateName;
-		this.opreateDate = opreateDate;
-	}
-
-	public ElecLogForm(String opreateName, Date opreateDate, String detail) {
-		this.opreateName = opreateName;
-		this.opreateDate = opreateDate;
-		this.detail = detail;
-	}
 
 	public Integer getLogId() {
 		return this.logId;
@@ -33,6 +24,14 @@ public class ElecLogForm {
 
 	public void setLogId(Integer logId) {
 		this.logId = logId;
+	}
+
+	public String getIpAddress() {
+		return ipAddress;
+	}
+
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
 	}
 
 	public String getOpreateName() {
@@ -43,11 +42,11 @@ public class ElecLogForm {
 		this.opreateName = opreateName;
 	}
 
-	public Date getOpreateDate() {
+	public String getOpreateDate() {
 		return this.opreateDate;
 	}
 
-	public void setOpreateDate(Date opreateDate) {
+	public void setOpreateDate(String opreateDate) {
 		this.opreateDate = opreateDate;
 	}
 

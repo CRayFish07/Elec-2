@@ -3,6 +3,7 @@ package junit;
 import org.junit.Test;
 
 import com.yzx.elec.container.ServiceProvider;
+import com.yzx.elec.service.IElecLogService;
 import com.yzx.elec.service.IElecRoleService;
 import com.yzx.elec.service.IElecSystemDDlService;
 
@@ -16,10 +17,15 @@ public class TestElecSystemDDL {
 		service.findKeyWord();
 	}
 	
-	@Test
+	//@Test
 	public void testUserRoleServiceFindUserList() {
 		IElecRoleService service = (IElecRoleService)ServiceProvider.getService(IElecRoleService.SERVICE_NAME);
 		service.findElecUserListByRoleId("0");
 	}
 
+	@Test
+	public void testElecLog() {
+		IElecLogService logService = (IElecLogService)ServiceProvider.getService(IElecLogService.SERVICE_NAME);
+		logService.log(null, "");
+	}
 }

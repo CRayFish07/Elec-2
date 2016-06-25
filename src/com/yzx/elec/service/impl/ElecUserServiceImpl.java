@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.xiang.encrypt.Md5Util;
 import com.yan.util.ColUtil;
 import com.yan.util.StringUtil;
-import com.yzx.elec.dao.ICommonDao;
 import com.yzx.elec.dao.IElecSystemDDLDao;
 import com.yzx.elec.dao.IElecUserDao;
 import com.yzx.elec.pojo.ElecUser;
@@ -24,7 +23,7 @@ import com.yzx.elec.web.form.ElecUserForm;
 
 @Transactional(readOnly=true)
 @Service(IElecUserService.SERVICE_NAME)
-public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserForm> implements IElecUserService {
+public class ElecUserServiceImpl implements IElecUserService {
 	private static final String IS_DUTY = "是否在职";
 	private static final String SEX = "性别";
 	
@@ -37,16 +36,12 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 														" INNER JOIN elec_user c ON b.userid=c.userid"+
 														" WHERE c.userid=? AND a.keyword='角色类型' AND c.isDuty=1";
 	
-	@Override
 	@Resource(name=IElecUserDao.DAO_NAME)
-	protected void setDao(ICommonDao<ElecUser> dao) {
-		this.dao = dao;
-	}
+	private IElecUserDao dao;
 	
 	@Resource(name=IElecSystemDDLDao.DAO_NAME)
 	private IElecSystemDDLDao ddlDao;
 
-	@Override
 	public List<ElecUserForm> findObjectsByConditions(ElecUserForm valueObject) {
 		StringBuilder sb = null;
 		ArrayList<String> params = null;
@@ -84,7 +79,6 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 	}
 
 	@Transactional(isolation=Isolation.DEFAULT,readOnly=false,propagation=Propagation.REQUIRED)
-	@Override
 	public void save(ElecUserForm form) {
 		if(form.isModify()) {
 			form.setLogonPassword(Md5Util.getInstance().makeMD5(form.getLogonPassword()));
@@ -141,7 +135,6 @@ public class ElecUserServiceImpl extends CommonServiceImpl<ElecUser, ElecUserFor
 		return form;
 	}
 
-	@Override
 	public ElecUserForm findObjectByVo(ElecUserForm form) {
 		ElecUser user = dao.findObjectById(form.getUserId());
 		return po2Vo(user, form);

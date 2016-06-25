@@ -357,7 +357,7 @@ TH {
 									
 									<TR>
 										<TD class="box06" onmouseover="backgroundColorChange(this,'white');" onmouseout="backgroundColorChange(this,'');">
-											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/logIndex.jsp" target="mainFrame">日志管理</A>
+											<A class="cl_01" onclick="linkcolorchange(this)" href="${pageContext.request.contextPath }/system/elecLogAction_home.do" target="mainFrame">日志管理</A>
 										</TD>
 									</TR>
 								</TBODY>

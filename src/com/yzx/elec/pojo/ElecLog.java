@@ -10,6 +10,7 @@ import java.util.Date;
 public class ElecLog implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer logId;
+	private String ipAddress;
 	private String opreateName;
 	private Date opreateDate;
 	private String detail;
@@ -34,6 +35,14 @@ public class ElecLog implements java.io.Serializable {
 
 	public void setLogId(Integer logId) {
 		this.logId = logId;
+	}
+
+	public String getIpAddress() {
+		return ipAddress;
+	}
+
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
 	}
 
 	public String getOpreateName() {
