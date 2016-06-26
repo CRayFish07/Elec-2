@@ -37,10 +37,10 @@ public class ElecMenuAction extends BaseAction implements ModelDriven<ElecMenuFo
 	public String home() throws UnsupportedEncodingException {
 		if(form.getRemeberMe() != null && form.getRemeberMe().equals("yes")) {
 			//添加帐号的cookie
-			CookieUtil.addCookie(response, form.getName(), "account");
+			CookieUtil.addCookie(response, "account", form.getName());
 		} else {
 			//添加帐号的cookie
-			CookieUtil.addCookie(response, null, "account");
+			CookieUtil.addCookie(response, "account", null);
 		}
 		
 		//检查校验码

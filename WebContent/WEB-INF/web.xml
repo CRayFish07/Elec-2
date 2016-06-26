@@ -8,12 +8,21 @@
   
   <filter>
   	<filter-name>logonFilter</filter-name>
-  	<filter-class></filter-class>
+  	<filter-class>com.yzx.elec.filter.LongonFilter</filter-class>
   	<init-param>
   		<param-name>allowPath</param-name>
-  		<param-value>index.jsp;elecMenuAction_home.do;image.jsp</param-value>
+  		<param-value>/index.jsp;/menu/elecMenuAction_home.do;/image.jsp</param-value>
   	</init-param>
   </filter>
+  
+  <filter-mapping>
+  	<filter-name>logonFilter</filter-name>
+  	<url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>logonFilter</filter-name>
+  	<url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
   
   <servlet>
   	<servlet-name>checkLogonName</servlet-name>

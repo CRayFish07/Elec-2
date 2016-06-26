@@ -82,7 +82,7 @@ FORM {
 								</tr>
 								<tr>
 									<td width="100"><img border="0" src="${pageContext.request.contextPath}/images/mima.gif" width="84" height="20"></td>
-									<td width="100"><input type="password" width="80px" value=""  maxlength="40"></input></td>
+									<td width="100"><input name="password" type="password" width="80px" value=""  maxlength="40"></input></td>
 								</tr>
 								<tr>
 									<td width="100"><img border="0" src="${pageContext.request.contextPath}/images/check.jpg" width="84" height="20"></td>
