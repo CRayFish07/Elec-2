@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yan.util.StringUtil;
-import com.yzx.elec.dao.ICommonDao;
 import com.yzx.elec.dao.IElecTextDao;
 import com.yzx.elec.pojo.ElecText;
 import com.yzx.elec.service.IElecTextService;
@@ -18,14 +17,11 @@ import com.yzx.elec.web.form.ElecTextForm;
 
 @Transactional(readOnly=true)
 @Service(IElecTextService.SERVICE_NAME)
-public class ElecTextServiceImpl extends CommonServiceImpl<ElecText, ElecTextForm> implements IElecTextService {
-	@Resource(name=IElecTextDao.DAO_NAME)
-	@Override
-	protected void setDao(ICommonDao<ElecText> dao) {
-		this.dao = dao;
-	}
+public class ElecTextServiceImpl implements IElecTextService {
 	
-	@Override
+	@Resource(name=IElecTextDao.DAO_NAME)
+	private IElecTextDao dao;
+	
 	public List<ElecTextForm> findObjectsByConditions(ElecTextForm valueObject) {
 		if(valueObject == null) {
 			return null;
@@ -69,7 +65,6 @@ public class ElecTextServiceImpl extends CommonServiceImpl<ElecText, ElecTextFor
 		return result;
 	}
 
-	@Override
 	public void save(ElecTextForm form) {
 		if(form == null) {
 			return;
@@ -86,7 +81,6 @@ public class ElecTextServiceImpl extends CommonServiceImpl<ElecText, ElecTextFor
 		return et;
 	}
 
-	@Override
 	public ElecTextForm findObjectByVo(ElecTextForm form) {
 		return null;
 	}

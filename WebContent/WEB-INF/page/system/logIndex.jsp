@@ -1,5 +1,6 @@
 
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
  <script language="javascript"> 
   function checkchar(){
@@ -80,89 +81,25 @@
 								<td align="center" width="25%" height=22 background="${pageContext.request.contextPath }/images/tablehead.jpg">操作情况</td>
 							</tr>
 							
-							
-								
+							<s:if test="%{#request.logList != null && #request.logList.size() != 0}">
+								<s:iterator value="#request.logList" var="log">
 									<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-										<input type="hidden" name="logid" value="ff80808132e8ceec0132e8d0214f0002" id="logid"/>
+										<input type="hidden" name="logid" value="#log.logId" id="logid"/>
 										<td style="HEIGHT:22px" align="center" width="25%">
-											&#36229;&#32423;&#31649;&#29702;&#21592;
+											<s:property value="#log.opreateName"/>
 										</td>
 										<td style="HEIGHT:22px" align="center" width="25%">
-											127.0.0.1
+											<s:property value="#log.ipAddress"/>
 										</td>
 										<td style="HEIGHT:22px" align="center" width="25%">
-											2011-10-09
+											<s:property value="#log.opreateDate"/>
 										</td>									
 										<td style="HEIGHT:22px" align="center" width="25%">
-											&#26032;&#22686;&#29992;&#25143;&#36213;&#29577;&#30000;
+											<s:property value="#log.detail"/>
 										</td>
 									</tr>
-									
-									<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-										<input type="hidden" name="logid" value="ff80808132e8ceec0132e8d09d350003" id="logid"/>
-										<td style="HEIGHT:22px" align="center" width="25%">
-											&#36229;&#32423;&#31649;&#29702;&#21592;
-										</td>
-										<td style="HEIGHT:22px" align="center" width="25%">
-											127.0.0.1
-										</td>
-										<td style="HEIGHT:22px" align="center" width="25%">
-											2011-10-09
-										</td>									
-										<td style="HEIGHT:22px" align="center" width="25%">
-											&#20462;&#25913;&#29992;&#25143;&#30000;&#19971;
-										</td>
-									</tr>
-									
-									<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-										<input type="hidden" name="logid" value="ff80808132e8ceec0132e8d0fdd40004" id="logid"/>
-										<td style="HEIGHT:22px" align="center" width="25%">
-											&#36229;&#32423;&#31649;&#29702;&#21592;
-										</td>
-										<td style="HEIGHT:22px" align="center" width="25%">
-											127.0.0.1
-										</td>
-										<td style="HEIGHT:22px" align="center" width="25%">
-											2011-10-09
-										</td>									
-										<td style="HEIGHT:22px" align="center" width="25%">
-											&#21024;&#38500;&#29992;&#25143;null
-										</td>
-									</tr>
-									
-									<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-										<input type="hidden" name="logid" value="ff80808132e8ceec0132e8d3c5dd0006" id="logid"/>
-										<td style="HEIGHT:22px" align="center" width="25%">
-											&#36229;&#32423;&#31649;&#29702;&#21592;
-										</td>
-										<td style="HEIGHT:22px" align="center" width="25%">
-											127.0.0.1
-										</td>
-										<td style="HEIGHT:22px" align="center" width="25%">
-											2011-10-09
-										</td>									
-										<td style="HEIGHT:22px" align="center" width="25%">
-											&#26032;&#22686;&#29992;&#25143;&#30475;&#30475;
-										</td>
-									</tr>
-									
-									<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-										<input type="hidden" name="logid" value="ff80808132e8ceec0132e8d3df310007" id="logid"/>
-										<td style="HEIGHT:22px" align="center" width="25%">
-											&#36229;&#32423;&#31649;&#29702;&#21592;
-										</td>
-										<td style="HEIGHT:22px" align="center" width="25%">
-											127.0.0.1
-										</td>
-										<td style="HEIGHT:22px" align="center" width="25%">
-											2011-10-09
-										</td>									
-										<td style="HEIGHT:22px" align="center" width="25%">
-											&#21024;&#38500;&#29992;&#25143;&#30475;&#30475;
-										</td>
-									</tr>
-									
-								
+								</s:iterator>
+							</s:if>
 						</table>					
 						
 					</td>

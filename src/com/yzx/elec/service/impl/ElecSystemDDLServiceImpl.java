@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.yan.util.ColUtil;
 import com.yan.util.StringUtil;
-import com.yzx.elec.dao.ICommonDao;
 import com.yzx.elec.dao.IElecSystemDDLDao;
 import com.yzx.elec.pojo.ElecSystemDDL;
 import com.yzx.elec.service.IElecSystemDDlService;
@@ -21,15 +20,12 @@ import com.yzx.elec.web.form.ElecSystemDDLForm;
 
 @Transactional(readOnly=true)
 @Service(IElecSystemDDlService.SERVICE_NAME)
-public class ElecSystemDDLServiceImpl extends CommonServiceImpl<ElecSystemDDL, ElecSystemDDLForm> implements IElecSystemDDlService {
+public class ElecSystemDDLServiceImpl implements IElecSystemDDlService {
 	
-	@Override
 	@Resource(name=IElecSystemDDLDao.DAO_NAME)
-	protected void setDao(ICommonDao<ElecSystemDDL> dao) {
-		this.dao = dao;
-	}
+	private IElecSystemDDLDao dao;
+	
 
-	@Override
 	public List<ElecSystemDDLForm> findObjectsByConditions(ElecSystemDDLForm valueObject) {
 		ElecSystemDDLForm vo = (ElecSystemDDLForm)valueObject;
 		
@@ -178,7 +174,6 @@ public class ElecSystemDDLServiceImpl extends CommonServiceImpl<ElecSystemDDL, E
 		return changePo2VoList(ddlList);
 	}
 
-	@Override
 	public ElecSystemDDLForm findObjectByVo(ElecSystemDDLForm form) {
 		return null;
 	}

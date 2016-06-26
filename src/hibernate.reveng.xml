@@ -2,6 +2,5 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-	<table-filter match-name="elec_role_popedom" match-catalog="elec"></table-filter>
-	<table-filter match-name="elec_user_role" match-catalog="elec"></table-filter>
+	<table-filter match-name="elec_log" match-catalog="elec"></table-filter>
 </hibernate-reverse-engineering>

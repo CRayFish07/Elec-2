@@ -1,3 +1,4 @@
+<%@page import="com.yzx.elec.stringEnum.StringEnum"%>
 <%@page import="com.yzx.common.util.CookieUtil"%>
 <%@page import="com.yan.util.StringUtil"%>
 <%@page import="org.apache.struts2.components.Include"%>
@@ -74,7 +75,7 @@ FORM {
 									<s:fielderror name="error" ></s:fielderror>
 								</tr>
 								<%
-									String name = CookieUtil.findCookie(request, "account");
+									String name = CookieUtil.findCookie(request, StringEnum.ACCOUNT);
 								%>
 								<tr>
 									<td width="100"><img border="0" src="${pageContext.request.contextPath}/images/yonghu.gif" width="84" height="20"></td>

@@ -1,3 +1,4 @@
+<%@page import="com.yzx.elec.stringEnum.StringEnum"%>
 <%@page import="java.io.IOException"%>
 <%@page import="java.awt.Font"%>
 <%@page import="java.awt.Color"%>
@@ -102,7 +103,7 @@
 	String checkWord = rankCheckWord();
 	
 	//将验证码放入session
-	session.setAttribute("checkWord", checkWord);
+	session.setAttribute(StringEnum.CHECK_WORD, checkWord);
 	
 	//画出验证码
 	BufferedImage image = drawCheckWord(checkWord);

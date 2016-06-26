@@ -14,8 +14,10 @@ import com.yan.util.StringUtil;
 import com.yzx.common.util.CookieUtil;
 import com.yzx.elec.container.ServiceProvider;
 import com.yzx.elec.service.IElecCommonMsgService;
+import com.yzx.elec.service.IElecLogService;
 import com.yzx.elec.service.IElecRoleService;
 import com.yzx.elec.service.IElecUserService;
+import com.yzx.elec.stringEnum.StringEnum;
 import com.yzx.elec.web.form.ElecCommonMsgForm;
 import com.yzx.elec.web.form.ElecMenuForm;
 import com.yzx.elec.web.form.ElecUserForm;
@@ -29,6 +31,8 @@ public class ElecMenuAction extends BaseAction implements ModelDriven<ElecMenuFo
 	
 	private IElecRoleService roleService = (IElecRoleService)ServiceProvider.getService(IElecRoleService.SERVICE_NAME);
 	
+	private IElecLogService logsService = (IElecLogService)ServiceProvider.getService(IElecLogService.SERVICE_NAME);
+	
 	@Override
 	public ElecMenuForm getModel() {
 		return form;
@@ -37,10 +41,17 @@ public class ElecMenuAction extends BaseAction implements ModelDriven<ElecMenuFo
 	public String home() throws UnsupportedEncodingException {
 		if(form.getRemeberMe() != null && form.getRemeberMe().equals("yes")) {
 			//添加帐号的cookie
+<<<<<<< HEAD
 			CookieUtil.addCookie(response, "account", form.getName());
 		} else {
 			//添加帐号的cookie
 			CookieUtil.addCookie(response, "account", null);
+=======
+			CookieUtil.addCookie(response, form.getName(), StringEnum.ACCOUNT);
+		} else {
+			//添加帐号的cookie
+			CookieUtil.addCookie(response, null, StringEnum.ACCOUNT);
+>>>>>>> 3ff1f38226cd175195d5a40bb1af8e3b16589826
 		}
 		
 		//检查校验码
@@ -76,14 +87,16 @@ public class ElecMenuAction extends BaseAction implements ModelDriven<ElecMenuFo
 			return "error";
 		}
 		
-		request.getSession().setAttribute("global_user", user);
-		request.getSession().setAttribute("global_role", roles);
-		request.getSession().setAttribute("global_popedom", popedoms);
+		request.getSession().setAttribute(StringEnum.GLOBAL_USER, user);
+		request.getSession().setAttribute(StringEnum.GLOBAL_ROLE, roles);
+		request.getSession().setAttribute(StringEnum.GLOBAL_POPEDOM, popedoms);
+		
+		logsService.log(request, "用户【"+user.getUserName()+"】登录系统");
 		return "home";
 	}
 	
 	private boolean checkWord(String checkWord) {
-		String sessionCheckWord = (String)request.getSession().getAttribute("checkWord");
+		String sessionCheckWord = (String)request.getSession().getAttribute(StringEnum.CHECK_WORD);
 		if(sessionCheckWord == null) {
 			return false;
 		} else {

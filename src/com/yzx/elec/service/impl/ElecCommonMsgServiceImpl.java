@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yan.util.ColUtil;
-import com.yzx.elec.dao.ICommonDao;
 import com.yzx.elec.dao.IElecCommonMsgDao;
 import com.yzx.elec.pojo.ElecCommonMsg;
 import com.yzx.elec.service.IElecCommonMsgService;
@@ -21,15 +20,11 @@ import com.yzx.elec.web.form.ElecCommonMsgForm;
 
 @Transactional(readOnly=true)
 @Service(IElecCommonMsgService.SERVICE_NAME)
-public class ElecCommonMsgServiceImpl extends CommonServiceImpl<ElecCommonMsg, ElecCommonMsgForm> implements IElecCommonMsgService {
-
-	@Override
+public class ElecCommonMsgServiceImpl implements IElecCommonMsgService {
+	
 	@Resource(name=IElecCommonMsgDao.DAO_NAME)
-	protected void setDao(ICommonDao<ElecCommonMsg> dao) {
-		this.dao = dao;
-	}
-
-	@Override
+	private IElecCommonMsgDao dao;
+	
 	public List<ElecCommonMsgForm> findObjectsByConditions(ElecCommonMsgForm valueObject) {
 		return null;
 	}
@@ -82,7 +77,6 @@ public class ElecCommonMsgServiceImpl extends CommonServiceImpl<ElecCommonMsg, E
 		}
 	}
 
-	@Override
 	@Transactional(readOnly=false, isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public void save(ElecCommonMsgForm form) {
 		if(form == null) {
@@ -103,7 +97,6 @@ public class ElecCommonMsgServiceImpl extends CommonServiceImpl<ElecCommonMsg, E
 		return entity;
 	}
 
-	@Override
 	public ElecCommonMsgForm findObjectByVo(ElecCommonMsgForm form) {
 		return null;
 	}

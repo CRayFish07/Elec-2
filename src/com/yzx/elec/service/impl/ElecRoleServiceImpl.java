@@ -97,6 +97,7 @@ public class ElecRoleServiceImpl implements IElecRoleService {
 				xmlList.add(obj);
 			}
 		}
+		
 		return xmlList;
 	}
 
